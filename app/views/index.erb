@@ -1,36 +1,48 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Play Horse Farm</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">ASD</a></li>
-        <li><a href="#">SRL</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Azienda agricola <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Servizio 1</a></li>
-            <li><a href="#">Servizio 2</a></li>
-            <li><a href="#">Servizio 3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Contattaci</a></li>
-          </ul>
-        </li>
+<!-- Navbar and carousel inside the fixed container -->
+<div class="container-fixed">
+  <div class="prenav">
+    <div class="container-fluid text-right">
+      <ul>
+        <li><i class="fa fa-facebook-square fa-lg"></i></li>
+        <li><i class="fa fa-instagram fa-lg"></i></li>
+        <li><i class="fa fa-youtube-square fa-lg"></i></li>
+        <li><i class="fa fa-pinterest-square fa-lg"></i></li>
+        <li><i class="fa fa-twitter-square fa-lg"></i></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    </div>
+  </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Play Horse Farm</a>
+      </div>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">ASD</a></li>
+          <li><a href="#">SRL</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Azienda agricola <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Servizio 1</a></li>
+              <li><a href="#">Servizio 2</a></li>
+              <li><a href="#">Servizio 3</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Contattaci</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
     <!-- Carousel
     ================================================== -->
@@ -85,12 +97,16 @@
         </div>
       </div>
     </div><!-- /.carousel -->
+  </div> <!-- container-fixed -->
 
+  <!-- placeholder to show the fixed stuff -->
+  <div class="placeholder"></div>
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Tutto all'interno di un container per centrare il contenuto -->
 
+  <div class="wrapper">
     <div class="container marketing">
 
       <!-- Servizi principali -->
@@ -115,45 +131,93 @@
       <!-- SEZIONI -->
 
       <!-- NEWS -->
+
       <div class="row featurette">
-        <div class="col-md-6 news">
+        <div class="col-md-6 box">
           <h2>News</h2>
           <hr>
-          <div class="row newsblock">
-            <div class="col-xs-4">
-              <img class="img-responsive center-block" src="http://lorempixel.com/140/70" alt="news1">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="http://lorempixel.com/64/64" alt="...">
+              </a>
             </div>
-            <div class="col-xs-8">
-              <p>13/05/2015</p>
-              <h3>Notizia 1</h3>
-            </div>
-          </div>
-          <hr>
-          <div class="row newsblock">
-            <div class="col-xs-4">
-              <img class="img-responsive center-block" src="http://lorempixel.com/140/70" alt="news2">
-            </div>
-            <div class="col-xs-8">
-              <p>13/05/2015</p>
-              <h3>Notizia 2</h3>
+            <div class="media-body">
+              <h4 class="media-heading">Gara a Vattelappesca: i risultati</h4>
+              Si è svolta a Vattelappesca la gara di cavaddi... (leggi)
             </div>
           </div>
           <hr>
-          <div class="row newsblock">
-            <div class="col-xs-4">
-              <img class="img-responsive center-block" src="http://lorempixel.com/140/70" alt="news3">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="http://lorempixel.com/64/64" alt="...">
+              </a>
             </div>
-            <div class="col-xs-8">
-              <p>13/05/2015</p>
-              <h3>Notizia 3</h3>
+            <div class="media-body">
+              <h4 class="media-heading">A Milano piove sempre</h4>
+              E' vero, Milano è la città più piovosa dell'universo. A confermarlo sono i dati Istat... (leggi)
             </div>
           </div>
+          <hr>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="http://lorempixel.com/64/64" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">I pulcini hanno sempre ragione</h4>
+              Secondo la recente scoperta dell'Università di Pio, i pulcini avrebbero un'intelligenza... (leggi)
+            </div>
+          </div>
+          <hr>
+          <a class="btn btn-primary">LEGGI TUTTO</a>
         </div>
         <div class="col-md-1"></div>
-        <!-- ALTRA SEZIONE -->
-        <div class="col-md-5 news">
-          <h2>Boh</h2>
+
+        <!-- SOCIAL -->
+
+        <div class="col-md-5 box">
+          <h2>Social</h2>
           <hr>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <i class="media-object fa fa-youtube-square fa-4x"></i>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Nome del video</h4>
+              Descrizione del video (usare Youtube API)
+            </div>
+          </div>
+          <hr>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <i class="media-object fa fa-facebook-square fa-4x"></i>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Ultimo post</h4>
+              Descrizione testuale del post (usare Facebook e incrociare le dita che si possa)
+            </div>
+          </div>
+          <hr>
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <i class="media-object fa fa-instagram fa-4x"></i>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Titolo immagine?</h4>
+              Non ha molto senso, magari meglio twitter
+            </div>
+          </div>
+          <hr>
+          <a class="btn btn-primary">LEGGI TUTTO</a>
         </div>
       </div>
 
@@ -210,3 +274,4 @@
         </div>
       </div>
     </footer>
+  </div> <!-- wrapper -->

@@ -17,9 +17,30 @@ body {
   padding:50px 0;
 }
 
+.container-fixed {
+  position:fixed;
+  width:100%;
+}
+
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
+
+.prenav {
+  background-color:#0e2f44;
+  width:100%;
+}
+
+.prenav > .container-fluid {
+  padding:10px 15px;
+  color:#d6d6d6;
+}
+
+.prenav > .container-fluid > ul { list-style-type: none; margin-bottom:0; }
+.prenav > .container-fluid > ul > li {
+  display:inline;
+  padding:10px;
+}
 
 .navbar {
   margin-bottom:0;
@@ -42,10 +63,12 @@ body {
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
+  z-index: 1;
   text-align:left;
   bottom:30%;
 }
+
+.carousel-caption h1 { font-size: 4.0em; }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
@@ -63,6 +86,17 @@ body {
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
+/* Leave empty space for the fixed stuff to show up */
+.placeholder {
+  min-height:700px;
+}
+
+.wrapper {
+  position:relative;
+  z-index:5;
+  background-color: white;
+  padding-top:50px;
+}
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -99,24 +133,19 @@ body {
 /* News
 ------------------------- */
 
-.news {
+.box {
   background-color:#ced5d9;
   height:500px;
   position:relative;
   padding:30px;
 }
 
-.news hr {
+.box hr {
   border-color:#0e2f44;
   border-width:1px;
 }
 
-.news img {
-  margin:0;
-  width:100%;
-}
-
-.news h3 {
+.box h3, .box h2 {
   margin:0;
 }
 
