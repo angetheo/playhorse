@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PlayhorseRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' %>
+  <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300" %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+	<body>
+
+  <!-- WRAPPER -->
+  <div class="wrapper">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default " role="navigation">
+      <div class="container">
+        <!-- TOPBAR -->
+        <div class="topbar">
+          <ul class="list-inline top-nav">
+            <li>
+              <div class="btn-group">
+                <button type="button" class="btn btn-link dropdown-toggle btn-xs" data-toggle="dropdown"><a href="#"><%= image_tag('flags/Italy.png', alt: 'Italy') %> <span class="no-mobile">Italiano</span> <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right country-selector" role="menu">
+                  <li>
+                    <a href="#"><%= image_tag('flags/Italy.png', alt: 'Italy') %> <span class="no-mobile">Italiano</span></a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="/faq">FAQ</a></li>
+            <li>|</li>
+            <li><a href="https://www.facebook.com/pages/Play-Horse-farm-alviano/277715079102838"><i class="fa fa-facebook-square facebook fa-lg"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCzTZ3mLTEOX6JiqL3e8DMWQ"><i class="fa fa-youtube-square youtube fa-lg"></i></a></li>
+            <li><a href="https://instagram.com/playhorsefarm/"><i class="fa fa-instagram instagram fa-lg"></i></a></li>
+            <li><a href="https://twitter.com/PlayHorseFarm"><i class="fa fa-twitter-square twitter fa-lg"></i></a></li>
+          </ul>
+        </div>
+        <!-- END TOPBAR -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+            <span class="sr-only">Toggle Navigation</span>
+            <i class="fa fa-bars"></i>
+          </button>
+          <a href="/" class="navbar-brand navbar-logo navbar-logo-bigger">
+          	<%= image_tag('logo/logo_new_black.png', alt: 'Play Horse Farm') %>
+          </a>
+        </div>
+
+        <!-- MAIN NAVIGATION -->
+        <div id="main-nav" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">LA PLAY HORSE FARM<i class="fa fa-angle-down"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown ">
+                  <a href="#">ASD <small>Play Horse Club</small> <i class="fa fa-angle-right"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="/asd/manifestazioni-equestri">Manifestazioni equestri</a>
+                    </li>
+              <!--  <li>
+                      <a href="/asd/campiestivi">Campi estivi</a>
+                    </li>
+                    <li>
+                      <a href="/asd/equitazione">Scuola di equitazione</a>
+                    </li> -->
+                  </ul>
+                </li>
+                <li class="dropdown ">
+                  <a href="#">SRL <small>Play Horse SRL</small> <i class="fa fa-angle-right"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="/srl/vendita-cavalli">Selezione e vendita cavalli</a>
+                    </li>
+                    <li>
+                      <a href="/srl/vendita-attrezzature">Vendita attrezzature</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown ">
+                  <a href="#">Azienda agricola <i class="fa fa-angle-right"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="/agr/allevamento">L'allevamento</a>
+                    </li>
+                    <li>
+                      <a href="/agr/agriturismo">L'agriturismo</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/about">CHI SIAMO</a></li>
+            <li><a href="/news">NEWS</a></li>
+            <!-- <li><a href="#">LAVORA CON NOI</a></li> -->
+          </ul>
+        </div>
+        <!-- END MAIN NAVIGATION -->
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+		<%= yield %>
+
+		<!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- COLUMN 1 -->
+            <h3 class="sr-only">SU DI NOI</h3>
+            <%= image_tag("logo/logo_new_white.png", alt: 'Play Horse Farm', class: 'logo') %>
+            <p>Manifestazioni equestri e organizzazione concorsi, allevamento e vendita cavalli da salto e ostacoli, organizzazione campi estivi per bambini, strutture ricettive e ospitalità.</p>
+            <br>
+            <address class="margin-bottom-30px">
+              <ul class="list-unstyled">
+                <li>Vocabolo Pupigliano, 25
+                  <br/>05020 Alviano TR</li>
+                <li>Tel / Whatsapp +39 331 899 0312</li>
+                <li>Email: supporto@playhorsefarm.com</li>
+              </ul>
+            </address>
+            <!-- END COLUMN 1 -->
+          </div>
+          <div class="col-md-4">
+            <!-- COLUMN 2 -->
+            <h3 class="footer-heading">LINK UTILI</h3>
+            <div class="row margin-bottom-30px">
+              <div class="col-xs-6">
+                <ul class="list-unstyled footer-nav">
+                  <li><a href="/about">Chi siamo</a></li>
+                  <li><a href="/news">News</a></li>
+                  <li><a href="/asd/manifestazioni-equestri">Manifestazioni equestri</a></li>
+                  <li><a href="/srl/vendita-cavalli">Selezione e vendita cavalli</a></li>
+                  <li><a href="/srl/vendita-attrezzature">Vendita e noleggio attrezzature</a></li>
+                  <li><a href="/agr/allevamento">Allevamento</a></li>
+                  <li><a href="/agr/agriturismo">Agriturismo e ospitalità</a></li>
+                </ul>
+              </div>
+              <div class="col-xs-6">
+                <ul class="list-unstyled footer-nav">
+                  <li><a href="/faq">FAQ</a></li>
+                  <% if administrator? %>
+                  <li><a href="/admin">Admin</a></li>
+                  <% else %>
+                  <li><a href="#" data-toggle="modal" data-target="#admin_login_modal">Admin</a></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <!-- END COLUMN 2 -->
+          </div>
+          <div class="col-md-4">
+            <!-- COLUMN 3 -->
+            <div class="newsletter">
+              <h3 class="footer-heading">NEWSLETTER</h3>
+              <p>Ricevi le ultime novità di Play Horse Farm direttamente sulla tua mail iscrivendoti alla newsletter:</p>
+              <form class="newsletter-form" method="post" action="/subscribe">
+                <div class="input-group input-group-lg">
+                  <input type="email" class="form-control" name="subscriber_email" placeholder="email@dominio.com">
+                  <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-spinner fa-spin"></i><span>ISCRIVITI</span></button></span>
+                </div>
+                <div class="alert"></div>
+              </form>
+            </div>
+            <div class="social-connect">
+              <h3 class="footer-heading">SOCIAL</h3>
+              <ul class="list-inline social-icons">
+                <li><a href="https://www.facebook.com/pages/Play-Horse-farm-alviano/277715079102838" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCzTZ3mLTEOX6JiqL3e8DMWQ" class="youtube-bg"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="https://instagram.com/playhorsefarm/" class="instagram-bg"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/PlayHorseFarm" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+              </ul>
+            </div>
+            <!-- END COLUMN 3 -->
+          </div>
+        </div>
+      </div>
+      <!-- COPYRIGHT -->
+      <div class="text-center copyright">
+        &copy;2015 Play Horse Farm | <a href="http://angetheo.github.io" target="_blank">Coo Design</a>
+      </div>
+      <!-- END COPYRIGHT -->
+    </footer>
+    <!-- END FOOTER -->
+
+		</div>
+		<!-- END WRAPPER -->
+
+	</body>
+</html>
