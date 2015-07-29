@@ -2,33 +2,330 @@
 		<section class="hero-unit-slider">
 			<div id="carousel-hero" class="slick-carousel">
 				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="http://lorempixel.com/1920/500" alt="Slider Image">
-						<div class="carousel-caption">
-							<h2 class="hero-heading">CLEAN &amp; ELEGANT DESIGN</h2>
-							<p class="lead">Giving valuable reputation and credibility to your business</p>
-							<a href="#" class="btn btn-lg hero-button">LEARN MORE</a>
-						</div>
-					</div>
+					<% @carousels.each do |item| %>
 					<div class="item">
 						<img src="http://lorempixel.com/1920/500" alt="Slider Image">
 						<div class="carousel-caption">
-							<h2 class="hero-heading">ULTRA RESPONSIVE</h2>
-							<p class="lead">Leave it to the theme, it knows how to deal with screen sizes</p>
-							<a href="#about" class="btn btn-lg hero-button">LEARN MORE</a>
+							<h2 class="hero-heading"><%= item.title.upcase %></h2>
+							<p class="lead"><%= item.subtitle %></p>
+							<% if !item.button.empty? %>
+								<a href="<%= item.button_url %>" class="btn btn-lg hero-button"><%= item.button %></a>
+							<% end %>
 						</div>
 					</div>
-					<div class="item">
-						<img src="http://lorempixel.com/1920/500" alt="Slider Image">
-						<div class="carousel-caption">
-							<h2 class="hero-heading">EASY TO CUSTOMIZE</h2>
-							<p class="lead">Readable code, well documented and FREE support</p>
-							<a href="#about" class="btn btn-lg hero-button">LEARN MORE</a>
-						</div>
-					</div>
+					<% end %>
 				</div>
 			</div>
 		</section>
 		<!-- END HERO UNIT -->
 
 		<div class="clearfix margin-bottom-30px"></div>
+
+		<!-- BOXED CONTENT -->
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-flag-checkered"></i>
+							<h2 class="boxed-content-title"><a href="/asd/manifestazioni-equestri">MANIFESTAZIONI EQUESTRI</a></h2>
+							<p>Sport, tecnica, formule avvincenti, premi speciali, divertimento, mondanità. Questi gli ingredienti dei nostri concorsi ippici.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-shopping-cart"></i>
+							<h2 class="boxed-content-title"><a href="/srl/vendita-cavalli">VENDITA CAVALLI</a></h2>
+							<p>La passione per un animale straordinario e l’ambizione di selezionare il meglio.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-cog"></i>
+							<h2 class="boxed-content-title"><a href="/agr/agriturismo">OSPITALITA', BENESSERE, EVENTI</a></h2>
+							<p>La nostra struttura ricettiva è la casa di campagna che hai sempre desiderato, per un week end romantico, qualche giorno con la famiglia, un meeting aziendale o una festa.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-sun-o"></i>
+							<h2 class="boxed-content-title"><a href="#">CAMPI ESTIVI PER BAMBINI</a></h2>
+							<p>Vacanza e divertimento, studio e sport in un contesto unico per sicurezza, comodità e cura dei dettagli.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-truck"></i>
+							<h2 class="boxed-content-title"><a href="/srl/vendita-attrezzature">VAN, OSTACOLI E BOX</a></h2>
+							<p>Anni di esperienza per offrirvi ottime attrezzature a prezzi interessanti.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="boxed-content left-aligned left-boxed-icon">
+							<i class="fa fa-paw"></i>
+							<h2 class="boxed-content-title"><a href="/agr/allevamento">ALLEVAMENTO</a></h2>
+							<p>Il sogno di veder nascere un futuro campione, la soddisfazione di allevarlo, l’orgoglio di vederlo vincere.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END BOXED CONTENT -->
+
+		<!-- LATEST NEWS AND EVENTS -->
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8" style="margin-bottom:10px">
+						<h2 class="section-heading">ULTIME NOTIZIE</h2>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="news-item news-featured">
+										<a href="/news/<%= @articles[0].id %>"><img src="<%= @articles[0].image %>" class="img-responsive" alt="News Thumbnail"></a>
+										<h3 class="news-title"><a href="/news/<%= @articles[0].id %>"><%= @articles[0].title %></a></h3>
+										<p><%= @articles[0].subtitle %></p>
+										<div class="news-meta">
+											<span class="news-datetime"><%= @articles[0].created_at.strftime("%d/%m/%Y") %></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="row">
+										<% @articles[1..2].each do |article| %>
+											<div class="col-md-12 col-sm-12">
+												<div class="news-item margin-bottom-30px clearfix">
+													<a href="/news/<%= article.id %>"><img src="<%= article.image %>" class="img-responsive pull-left" alt="News Thumbnail"></a>
+													<div class="right">
+														<h3 class="news-title"><a href="/news/<%= article.id %>"><%= article.title %></a></h3>
+														<p><%= article.subtitle %></p>
+													</div>
+												</div>
+											</div>
+										<% end %>
+										<div class="col-md-12 col-sm-12">
+											<div class="see-all-news">
+												<a href="/news">Leggi tutto <i class="fa fa-long-arrow-right"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="col-md-4">
+						<h2 class="section-heading">CONCORSI</h2>
+						<div class="responsive-calendar">
+						  <div class="controls">
+						      <a class="pull-left" data-go="prev"><div class="btn"><i class="fa fa-arrow-left"></i></div></a>
+						      <h4><span data-head-year></span> <span data-head-month></span></h4>
+						      <a class="pull-right" data-go="next"><div class="btn"><i class="fa fa-arrow-right"></i></div></a>
+						  </div><hr/>
+						  <div class="day-headers">
+						    <div class="day header">Lun</div>
+						    <div class="day header">Mar</div>
+						    <div class="day header">Mer</div>
+						    <div class="day header">Gio</div>
+						    <div class="day header">Ven</div>
+						    <div class="day header">Sab</div>
+						    <div class="day header">Dom</div>
+						  </div>
+						  <div class="days" data-group="days">
+						    <!-- the place where days will be generated -->
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END LATEST NEWS AND EVENTS -->
+
+		<!-- SOCIAL -->
+		<section>
+			<div class="container">
+				<hr>
+				<h2 class="section-heading sr-only">SOCIAL</h2>
+				<div class="tab-content">
+					<!-- FACEBOOK -->
+					<div class="tab-pane fade in active" id="tab-bottom1">
+						<div class="row">
+							<div class="col-md-5 text-center">
+								<div class="fb-page margin-bottom-30px" data-href="https://www.facebook.com/pages/Play-Horse-farm-alviano/277715079102838" data-width="350" data-height="215" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/Play-Horse-farm-alviano/277715079102838"><a href="https://www.facebook.com/pages/Play-Horse-farm-alviano/277715079102838">Play Horse farm alviano</a></blockquote></div></div>
+							</div>
+							<div class="col-md-7">
+								<h3 class="text-accent-color">FACEBOOK</h3>
+								<p class="lead">Segui la nostra Pagina di Facebook per essere aggiornato su Play Horse Farm!</p>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+					</div>
+					<!-- YOUTUBE -->
+					<div class="tab-pane fade" id="tab-bottom2">
+						<div class="row">
+							<div class="col-md-5 text-center">
+								<iframe width="330" height="215" class="margin-bottom-30px" src="https://www.youtube.com/embed/videoseries?list=PLBoE7_f22cMHH3y_9DqJtppcOM2dMo-W_" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<div class="col-md-7">
+								<h3 class="text-accent-color">YOUTUBE</h3>
+								<p class="lead">Iscriviti al canale per vedere gli ultimi video e gli aggiornamenti sul mondo equestre!</p>
+								<p>
+									<a class="btn btn-social btn-xs btn-google" href="https://www.youtube.com/channel/UCzTZ3mLTEOX6JiqL3e8DMWQ" target="_blank">
+										<i class="fa fa-youtube"></i> Iscriviti
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- INSTAGRAM -->
+					<div class="tab-pane fade" id="tab-bottom3">
+						<div class="row">
+							<div class="col-md-5 text-center">
+								<img src="<%= @last_instagram['images']['low_resolution']['url'] %>" class="margin-bottom-30px" alt="Image-Instagram" style="height:220px; border-radius:10px">
+							</div>
+							<div class="col-md-7">
+								<h3 class="text-accent-color">INSTAGRAM</h3>
+								<p class="lead"><%= @last_instagram['caption']['text'][0..200]+'...' %></p>
+								<p>
+									<a class="btn btn-social btn-xs btn-instagram" href="http://instagram.com/playhorsefarm" target="_blank">
+										<i class="fa fa-instagram"></i> Seguici
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- TWITTER -->
+					<div class="tab-pane fade" id="tab-bottom4">
+						<div class="row">
+							<div class="col-md-5 text-center">
+								<a href="<%= !@last_tweet.media.empty? ? @last_tweet.media.first.display_url : '#' %>"><img src="<%= !@last_tweet.media.empty? ? @last_tweet.media.first.media_url.to_s : "/assets/placeholders/twitter.png" %>" class="margin-bottom-30px" style="height:220px; border-radius:10px" alt="Image-Twitter"></a>
+							</div>
+							<div class="col-md-7">
+								<h3 class="text-accent-color">Play Horse Farm <small>@playhorsefarm</small></h3>
+								<p class="lead"><%= @last_tweet.text %></p>
+								<p>
+									<a class="btn btn-social btn-xs btn-twitter" href="https://twitter.com/PlayHorseFarm" target="_blank">
+										<i class="fa fa-twitter"></i> Segui @PlayHorseFarm
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				<div class="custom-tabs-line tabs-line-top">
+					<ul class="nav" role="tablist">
+						<li class="active"><a href="#tab-bottom1" role="tab" data-toggle="tab"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+						<li><a href="#tab-bottom2" role="tab" data-toggle="tab"><i class="fa fa-youtube-square"></i> Youtube</a></li>
+						<li><a href="#tab-bottom3" role="tab" data-toggle="tab"><i class="fa fa-instagram"></i> Instagram</a></li>
+						<li><a href="#tab-bottom4" role="tab" data-toggle="tab"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- END SOCIAL -->
+
+		<!-- TESTIMONIAL -->
+		<section class="testimonial-with-bg parallax">
+			<div class="container">
+				<section class="testimonial slick-carousel">
+					<div class="testimonial-body">
+						<p>Quel cavallo non era stato creato per calpestare la terra, aveva l’istinto per aria, e ogni volta che spiccava il volo cercava di lasciarmi lì.</p>
+						<div class="testimonial-author">- <span class="author-name">Anonimo</span></div>
+					</div>
+					<div class="testimonial-body">
+						<p>In sella ad un cavallo l’uomo può riuscire a placare il suo slancio verso l’infinito. A sentirsi, anche solo per un istante, più vicino al cielo.</p>
+						<div class="testimonial-author">- <span class="author-name">Anonimo</span></div>
+					</div>
+					<div class="testimonial-body">
+						<p>La gioia essenziale di stare con i cavalli è il mettersi a contatto con i rari elementi di grazia, bellezza, spirito e fuoco.</p>
+						<div class="testimonial-author">- <span class="author-name">Sharon Ralls Lemon</span></div>
+					</div>
+				</section>
+			</div>
+		</section>
+		<!-- END TESTIMONIAL -->
+
+		<!-- OUR CLIENTS -->
+		<section class="clients">
+			<div class="container">
+				<h2 class="section-heading">MAIN SPONSOR PONYADI 2015</h2>
+				<ul class="list-inline list-client-logo">
+					<li>
+						<a href="http://shop.fixdesign.it/it/"><img src="/assets/sponsors/fixdesign.png" alt="logo"></a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- END OUR CLIENTS -->
+
+		<!-- CONTACT -->
+		<section id="contact">
+			<div class="container">
+				<div class="heading-center">
+					<h2>DOVE SIAMO</h2>
+					<p class="lead">Ci trovi ad Alviano, a solo un'ora da Roma.</p>
+				</div>
+			</div>
+			<div class="google-map margin-bottom-50px">
+				<div id="custom-map-canvas"></div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="contact-info contact-half margin-bottom-50px fa-ul">
+							<li><i class="fa fa-li fa-building-o"></i>
+								<h3>Indirizzo</h3>
+								<p>Vocabolo Pupigliano 25, 05020 Alviano TR</p>
+							</li>
+							<li><i class="fa fa-li fa-whatsapp"></i>
+								<h3>Telefono</h3>
+								<p>+39 331 899 0312</p>
+							</li>
+							<li><i class="fa fa-li fa-envelope-o"></i>
+								<h3>Email</h3>
+								<p><a name="contact" href="mailto:supporto@playhorsefarm.com">supporto@playhorsefarm.com</a></p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<!-- CONCTACT FORM -->
+						<div class="contact-form-wrapper">
+							<h3>Contattaci</h3>
+							<form id="contact-form" method="post" action="/contact" class="form-horizontal margin-bottom-30px" role="form" novalidate>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="contact-name" class="control-label sr-only">Nome</label>
+											<input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Nome*" required>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="contact-email" class="control-label sr-only">Email</label>
+											<input type="email" class="form-control" id="contact_email" name="contact_email" placeholder="Email*" required>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contact-subject" class="control-label sr-only">Oggetto</label>
+									<div class="col-sm-12">
+										<input type="text" class="form-control" id="contact_subject" name="contact_subject" placeholder="Oggetto">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contact-message" class="control-label sr-only">Messaggio</label>
+									<div class="col-sm-12">
+										<textarea class="form-control" id="contact_message" name="contact_message" rows="4" cols="30" placeholder="Messaggio*" required></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-12">
+										<button id="submit-button" type="submit" class="btn btn-primary"><i class="fa loading-icon"></i><span>Invia</span>
+										</button>
+									</div>
+								</div>
+								<input type="hidden" name="msg-submitted" id="msg-submitted" value="true">
+							</form>
+						</div>
+						<!-- END CONTACT FORM -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END CONTACT -->

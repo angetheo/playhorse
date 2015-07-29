@@ -208,6 +208,14 @@ $(document).ready( function() {
 		$(this).addClass('current');
 	});
 
+	/*--------------------------------/
+	/* RESPONSIVE CALENDAR
+	/*-------------------------------*/
+
+	$('.responsive-calendar').responsiveCalendar({
+		translateMonths: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
+	});
+
 
 	/*--------------------------------/
 	/* BOOTSTRAP TOOLTIP

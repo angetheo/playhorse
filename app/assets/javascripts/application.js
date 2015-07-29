@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require slick
+//= require stellar
+//= require responsive-calendar.min
+//= require google-map
 //= require repute
 //= require turbolinks
 //= require_tree .

@@ -1,0 +1,89 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">FAQ</h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li class="active">FAQ</li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container">
+        <!-- TOP FAQs -->
+        <h2><%= @top_faqs.empty? ? "<i class='fa fa-frown-o'></i> &nbsp; Nessuna FAQ disponibile. Riprova più tardi" : "Top FAQ" %></h2>
+        <div class="panel-group panel-group-faq top-faq">
+          <% @top_faqs.each_with_index do |faq, index| %>
+          <div class="panel panel-minimal">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#top-faq<%= index+1 %>" class="collapsed"><span class="number pull-left"><%= index+1 %></span> <%= faq.question %></a>
+              </h4>
+            </div>
+            <div id="top-faq<%= index+1 %>" class="panel-collapse collapse" style="height: 0px;">
+              <div class="panel-body">
+                <p><%= faq.answer %></p>
+                <div class="faq-footer">
+                  <span class="text-muted"><%= faq.views %> visualizzazioni</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <!-- END TOP FAQs -->
+
+        <!-- FAQs -->
+        <% @faq_categories.each do |category| %>
+        <% @categorized_faqs = @faqs.where(category: category) %>
+
+        <h2><%= category %></h2>
+        <div class="panel-group panel-group-faq">
+          <% @categorized_faqs.each_with_index do |faq, index| %>
+          <div class="panel panel-minimal">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#faq-<%= category.split.join('')+"-"+(index+1).to_s %>" class="collapsed"><%= faq.question %></a>
+              </h4>
+            </div>
+            <div id="faq-<%= category.split.join('')+"-"+(index+1).to_s %>" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p><%= faq.answer %></p>
+                <div class="faq-footer">
+                  <span class="text-muted"><%= faq.views %> visualizzazioni</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+        <!-- END FAQs -->
+
+        <!-- FAQS HELPER -->
+        <div class="text-center">
+          <h4>Non hai trovato quello che cercavi?</h4>
+          <p>Prova a consultare le seguenti pagine</p>
+          <ul class="list-inline faq-further-links-list">
+            <li>
+              <a href="/about">Chi siamo</a>
+              <p class="text-muted">Tutte le informazioni e i contatti sulle persone dietro l'azienda</p>
+            </li>
+            <li>
+              <a href="/news">News</a>
+              <p class="text-muted">Le ultime novità e gli articoli più recenti sul mondo Play Horse Farm</p>
+            </li>
+          </ul>
+          <p class="bottom-30px">Ancora nulla?
+            <a href="http://www.playhorsefarm.com#contact">Contattaci e ti risponderemo al più presto!</a>
+          </p>
+        </div>
+        <!-- END FAQS HELPER -->
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->

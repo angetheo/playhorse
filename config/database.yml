@@ -23,14 +23,6 @@ default: &default
 
 development:
   <<: *default
-  database: "playhorse_development"
-
-test:
-  <<: *default
-  database: "playhorse_test"
-
-production:
-  <<: *default
-  database: "playhorse_production"
+  database: "playhorsefarm_development"
 
 
