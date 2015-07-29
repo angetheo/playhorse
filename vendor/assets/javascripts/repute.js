@@ -1,4 +1,7 @@
-$(document).ready( function() {
+var ready;
+ready = function() {
+
+	new WOW().init();
 
 	/*----------------------------/
 	/* TOP BAR COUNTRY-SELECTION
@@ -141,7 +144,7 @@ $(document).ready( function() {
 
 
 	/*----------------------------/
-	/* BLOG
+	/* FITVIDS
 	/*---------------------------*/
 
 	if($('.featured-video').length > 0) {
@@ -156,40 +159,6 @@ $(document).ready( function() {
 	if($('.multiselect').length > 0) {
 		$('.multiselect').multiselect();
 	}
-
-
-	/*--------------------------------/
-	/* AJAX CALL FOR STATEFUL BUTTON
-	/*-------------------------------*/
-
-	if( $('#loading-example-btn').length > 0 ) {
-		$('#loading-example-btn').click( function() {
-			var btn = $(this);
-
-			$.ajax({
-				url: 'php/ajax-response.php',
-				type: 'POST',
-				dataType: 'json',
-				cache: false,
-				beforeSend: function(){
-					btn.button('loading');
-				},
-				success: function(  data, textStatus, XMLHttpRequest  ) {
-					// dummy delay for demo purpose only
-					setTimeout( function() {
-						$('#server-message').text(data['msg']).addClass('green-font');
-						btn.button('reset');
-					}, 1000 );
-				},
-				error: function( XMLHttpRequest, textStatus, errorThrown ) {
-					console.log("AJAX ERROR: \n" + errorThrown);
-				}
-			});
-
-			
-		});
-	}
-
 
 	/*--------------------------------/
 	/* SIDEBAR NAVIGATION TOGGLE
@@ -316,114 +285,13 @@ $(document).ready( function() {
 		});
 	}
 
-
-	/*-----------------------------------/
-	/* AJAX CALL FOR NEWSLETTER FUNCTION
-	/*----------------------------------*/
-
-	$newsletter = $('.newsletter-form');
-	$newsletter.find('.btn').click( function() {
-		$url = 'php/mailchimp.php';
-
-		$attr = $newsletter.attr('action');
-		if (typeof $attr !== typeof undefined && $attr !== false) {
-			if($newsletter.attr('action') != '') $url = $newsletter.attr('action');
-		}
-
-		subscribe($newsletter, $url);
-	});
-
-	function subscribe(newsletter, formUrl) {
-		$btn = newsletter.find('.btn');
-
-		$.ajax({
-
-			url: formUrl,
-			type: 'POST',
-			dataType: 'json',
-			cache: false,
-			data: {
-				email: newsletter.find('input[name="email"]').val(),
-			},
-			beforeSend: function(){
-				$btn.addClass('loading');
-				$btn.attr('disabled', 'disabled');
-			},
-			success: function( data, textStatus, XMLHttpRequest ){
-				
-				var className = '';
-
-				if( data.result == true ){
-					className = 'alert-success';
-				}else {
-					className = 'alert-danger';
-				}
-
-				newsletter.find('.alert').html( data.message )
-				.removeClass( 'alert-danger alert-success' )
-				.addClass( 'alert active ' + className )
-				.slideDown(300);
-
-				$btn.removeClass('loading');
-				$btn.removeAttr('disabled');
-			},
-			error: function( XMLHttpRequest, textStatus, errorThrown ){
-				console.log("AJAX ERROR: \n" + XMLHttpRequest.responseText + "\n" + textStatus);
-			}
-			
-		});
-	}
-
 	
 	/*-----------------------------------/
-	/* AJAX CONTACT FORM
+	/* CONTACT FORM
 	/*----------------------------------*/
 
 	if($('#contact-form').length > 0) {
 		$('#contact-form').parsley();
-
-		$('.contact-form-wrapper form').submit( function(e) {
-			e.preventDefault();
-			
-
-			if( !$(this).parsley('isValid') )
-				return;
-
-			$theForm = $(this);
-			$btn = $(this).find('#submit-button');
-			$btnText = $btn.text();
-			$(this).parent().append('<div class="alert"></div>');
-			$alert = $(this).parent().find('.alert');
-
-			$btn.find('.loading-icon').addClass('fa-spinner fa-spin ');
-			$btn.prop('disabled', true).find('span').text("Sending...");
-
-			$url = "php/contact.php";
-
-			$attr = $(this).attr('action');
-			if (typeof $attr !== typeof undefined && $attr !== false) {
-				if($(this).attr('action') != '') $url = $(this).attr('action');
-			}
-
-			$.post($url, $(this).serialize(), function(data){
-				
-				$message = data.message;
-				
-				if( data.result == true ){
-					$theForm.slideUp('medium', function() {
-						$alert.removeClass('alert-danger');
-						$alert.addClass('alert-success').html($message).slideDown('medium');
-					});
-				}else {
-					$alert.addClass('alert-danger').html($message).slideDown('medium');
-				}
-
-				$btn.find('.loading-icon').removeClass('fa-spinner fa-spin ');
-				$btn.prop('disabled', false).find('span').text($btnText);
-
-			})
-			.fail(function() { console.log('AJAX Error'); });
-		});
 	}
 
 
@@ -444,5 +312,8 @@ $(document).ready( function() {
 		$('html').addClass('mobile');
 	}
 
-});
+}
+
+$(document).ready(ready)
+$(document).on('page:load', ready);
 

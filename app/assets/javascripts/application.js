@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require wow
 //= require slick
 //= require stellar
+//= require fitvids
+//= require parsley
 //= require responsive-calendar.min
 //= require google-map
 //= require repute
