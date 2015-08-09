@@ -4,7 +4,7 @@
 				<div class="carousel-inner" role="listbox">
 					<% @carousels.each do |item| %>
 					<div class="item">
-						<img src="http://lorempixel.com/1920/500" alt="Slider Image">
+						<img src="<%= item.image %>" alt="Slider Image">
 						<div class="carousel-caption">
 							<h2 class="hero-heading"><%= item.title.upcase %></h2>
 							<p class="lead"><%= item.subtitle %></p>
@@ -24,50 +24,19 @@
 		<!-- BOXED CONTENT -->
 		<section>
 			<div class="container">
+				<% @services.each_slice(3) do |triplet| %>
 				<div class="row">
+					<% triplet.each do |service| %>
 					<div class="col-md-4">
 						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-flag-checkered"></i>
-							<h2 class="boxed-content-title"><a href="/asd/manifestazioni-equestri">MANIFESTAZIONI EQUESTRI</a></h2>
-							<p>Sport, tecnica, formule avvincenti, premi speciali, divertimento, mondanità. Questi gli ingredienti dei nostri concorsi ippici.</p>
+							<i class="fa <%= service.icon %>"></i>
+							<h2 class="boxed-content-title"><a href="/asd/manifestazioni-equestri"><%= service.title.upcase %></a></h2>
+							<p><%= service.description %></p>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-shopping-cart"></i>
-							<h2 class="boxed-content-title"><a href="/srl/vendita-cavalli">VENDITA CAVALLI</a></h2>
-							<p>La passione per un animale straordinario e l’ambizione di selezionare il meglio.</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-cog"></i>
-							<h2 class="boxed-content-title"><a href="/agr/agriturismo">OSPITALITA', BENESSERE, EVENTI</a></h2>
-							<p>La nostra struttura ricettiva è la casa di campagna che hai sempre desiderato, per un week end romantico, qualche giorno con la famiglia, un meeting aziendale o una festa.</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-sun-o"></i>
-							<h2 class="boxed-content-title"><a href="#">CAMPI ESTIVI PER BAMBINI</a></h2>
-							<p>Vacanza e divertimento, studio e sport in un contesto unico per sicurezza, comodità e cura dei dettagli.</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-truck"></i>
-							<h2 class="boxed-content-title"><a href="/srl/vendita-attrezzature">VAN, OSTACOLI E BOX</a></h2>
-							<p>Anni di esperienza per offrirvi ottime attrezzature a prezzi interessanti.</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="boxed-content left-aligned left-boxed-icon">
-							<i class="fa fa-paw"></i>
-							<h2 class="boxed-content-title"><a href="/agr/allevamento">ALLEVAMENTO</a></h2>
-							<p>Il sogno di veder nascere un futuro campione, la soddisfazione di allevarlo, l’orgoglio di vederlo vincere.</p>
-						</div>
-					</div>
+					<% end %>
 				</div>
+				<% end %>
 			</div>
 		</section>
 		<!-- END BOXED CONTENT -->
@@ -247,7 +216,7 @@
 				<h2 class="section-heading">MAIN SPONSOR PONYADI 2015</h2>
 				<ul class="list-inline list-client-logo">
 					<li>
-						<a href="http://shop.fixdesign.it/it/"><img src="/assets/sponsors/fixdesign.png" alt="logo"></a>
+						<a href="http://shop.fixdesign.it/it/"><img src="/assets/sponsors/fixdesign.png" alt="logo" class="img-responsive"></a>
 					</li>
 				</ul>
 			</div>

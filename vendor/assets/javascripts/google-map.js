@@ -1,6 +1,6 @@
-	window.onload = loadScript;
+	var loadScript;
 
-	function loadScript() {
+	loadScript = function() {
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ_PBnVagLZG7CMJTBfLlLPkLNnpturk0&sensor=true&' +
@@ -157,4 +157,7 @@
 			}
 		});
 	}
+
+	$(document).ready(loadScript)
+	$(document).on('page:load', loadScript);
 

@@ -285,6 +285,15 @@ ready = function() {
 		});
 	}
 
+	/*--------------------------------/
+	/* FILE BUTTON STYLING
+	/*-------------------------------*/
+
+	$('.btn-file :file').on('change', function() {
+	    var $input = $(this).parents('.input-group').find(':text');
+	    $input.attr('value',$(this).val().split(/[\\]+/).pop());
+  	});
+
 	
 	/*-----------------------------------/
 	/* CONTACT FORM

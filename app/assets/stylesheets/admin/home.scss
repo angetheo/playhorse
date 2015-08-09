@@ -1,0 +1,39 @@
+// Place all the styles related to the admin/home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.row.no-margins {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.carousel-box {
+	padding:10px;
+}
+
+.carousel-box .content {
+	border: 1px solid #eeeeee;
+	padding:20px;
+	color: #fff !important;
+}
+
+.carousel-box .content h4 { color: #fff; }
+
+@media screen and (min-width:480px) {
+	.carousel-box:first-child { padding-left: 0 }
+	.carousel-box:last-child { padding-right: 0 }
+}
+
+.service-box {
+	padding:10px;
+}
+
+.service-box .content {
+	border: 1px solid #eeeeee;
+	padding:20px;
+}
+
+@media screen and (min-width:480px) {
+	.service-box:first-child { padding-left: 0 }
+	.service-box:last-child { padding-right: 0 }
+}

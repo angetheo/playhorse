@@ -1,0 +1,131 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">HOME PAGE</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione degli elementi della pagina principale
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+      	<hr>
+      	<h4><i class="fa fa-film"></i> Carousel <small>> Gestione degli elementi del carousel.</small></h4>
+  		<hr>
+  		<!-- CAROUSEL MANAGEMENT -->
+  		<div class="row no-margins">
+  			<% @carousels.each do |carousel| %>
+	  		<div class="col-md-4 carousel-box">
+	  			<div class="content" style="background: url(<%= carousel.image %>) center center; background-size:cover;">
+	  				<!-- CONTENT -->
+	  				<button class="btn btn-default btn-sm pull-right" id="carousel_modal_<%= carousel.id %>"><i class="fa fa-pencil"></i></button>
+  					<h4><%= carousel.title.upcase %></h4>
+  					<p><%= carousel.subtitle %></p>
+  					<%= ('<a href="'+carousel.button_url+'" class="btn btn-primary btn-sm">'+carousel.button+'</a>').html_safe if !!carousel.button %>
+	  			</div>
+	  		</div>
+	  		<% end %>
+  		</div>
+  		<!-- END CAROUSEL MANAGEMENT -->
+  		<hr>
+  		<!-- SERVICES MANAGEMENT -->
+  		<h4><i class="fa fa-cubes"></i> Servizi <small> Gestione dei titoli e delle descrizioni dei servizi.</small></h4>
+  		<hr>
+  		<div class="row no-margins">
+  			<div class="col-md-4 service-box">
+  				<div class="content">
+  					<h4>1) Seleziona il servizio da modificare</h4>
+	  				<select class="form-control service-select">
+	  					<option value="default" selected="selected" disabled="disabled">Seleziona...</option>
+	  					<% @services.each do |service| %>
+	  					<option value="<%= service.id %>"><%= service.title.upcase %></option>
+	  					<% end %>
+	  				</select>
+  				</div>
+  			</div>
+  			<div class="col-md-4 service-box">
+  				<div class="content">
+	  				<h4>2) Modifica il contenuto</h4>
+	  				<form id="service-form" method="post">
+					  <div class="form-group">
+					    <label for="edit_service_title">Titolo</label>
+					    <input type="text" class="form-control" name="edit_service_title" id="edit_service_title" placeholder="Titolo" disabled="disabled">
+					  </div>
+					  <div class="form-group">
+					    <label for="edit_service_description">Descrizione</label>
+					    <textarea class="form-control" rows="3" name="edit_service_description" id="edit_service_description" placeholder="Descrizione" disabled="disabled"></textarea>
+					  </div>
+					  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					  <button type="submit" class="btn btn-success">Salva</button>
+					  <input type="hidden" name="_method" value="put">
+					</form>
+			    </div>
+  			</div>
+  			<div class="col-md-4 service-box">
+  				<div class="boxed-content left-aligned left-boxed-icon hidden" id="service-preview">
+					<i></i>
+					<h2 class="boxed-content-title"></h2>
+					<p></p>
+				</div>
+  			</div>
+  		</div>
+      </div>
+    </div>
+
+    
+
+    <!-- CAROUSEL MODAL -->
+		<div class="modal fade" id="edit_carousel_modal" tabindex="-1" role="dialog" aria-labelledby="edit_carousel_modal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Modifica elemento del Carousel</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form method="post" enctype="multipart/form-data">
+				  <div class="form-group">
+				    <label for="edit_carousel_title">Titolo</label>
+				    <input type="text" class="form-control" id="edit_carousel_title" name="edit_carousel_title" placeholder="Titolo" required>
+				  </div>
+				  <div class="form-group">
+				    <label for="edit_carousel_subtitle">Sottotitolo</label>
+				    <input type="text" class="form-control" id="edit_carousel_subtitle" name="edit_carousel_subtitle" placeholder="Sottotitolo" required>
+				  </div>
+				  <div class="form-group">
+				    <label for="edit_carousel_button">Pulsante</label>
+			      <input type="text" class="form-control" id="edit_carousel_button" name="edit_carousel_button" placeholder="Nessun pulsante">
+				  </div>
+				  <div class="form-group">
+				    <label for="edit_carousel_button_url">URL Pulsante</label>
+			      <input type="text" class="form-control" id="edit_carousel_button_url" name="edit_carousel_button_url" placeholder="URL Pulsante">
+				  </div>
+		          <div class="form-group">
+		            <label for="edit_carousel_image">Immagine</label>
+		            <div class="input-group">
+		              <span class="input-group-btn">
+		                  <span class="btn btn-info btn-file">
+		                      Scegli file&hellip; <input type="file" id="edit_carousel_image" name="edit_carousel_image" value="">
+		                  </span>
+		              </span>
+		              <input type="text" class="form-control" readonly>
+		            </div>
+		          </div>
+		      </div>
+		      <div class="modal-footer">
+				<button type="submit" class="btn btn-success">Modifica</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+		      </div>
+		      <input type="hidden" name="_method" value="put">
+			  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			  </form>
+		    </div>
+		  </div>
+		</div>
+		<!-- END CAROUSEL MODAL -->
