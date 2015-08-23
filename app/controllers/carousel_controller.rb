@@ -8,7 +8,7 @@ class CarouselController < ApplicationController
     end
   end
 
-  def edit
+  def update
     @carousel = Carousel.find(params[:id])
 
   	@carousel.title = params[:edit_carousel_title]

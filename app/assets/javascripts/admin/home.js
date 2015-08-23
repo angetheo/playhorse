@@ -1,6 +1,6 @@
-var ready;
+var home_admin_ready;
 
-ready = function() {
+home_admin_ready = function() {
 
 	// CAROUSEL MODAL AJAX
 
@@ -11,12 +11,12 @@ ready = function() {
 		$editIcon.html('<i class="fa fa-spinner fa-pulse"></i>');
 
 		$.ajax({
-			url: '/admin/home/carousel/'+carouselId,
+			url: '/carousel/'+carouselId,
 			dataType: 'json'
 		})
 			.done(function(serverData) {
 				var $form = $('#edit_carousel_modal').find('form');
-				$form.attr('action','/admin/home/carousel/'+carouselId);
+				$form.attr('action','/carousel/'+carouselId);
 				$('#edit_carousel_title').attr('value',serverData.title);
 				$('#edit_carousel_subtitle').attr('value',serverData.subtitle);
 				$('#edit_carousel_button').attr('value',serverData.button);
@@ -35,17 +35,18 @@ ready = function() {
 	$('.service-select').on('change', function(e) {
 		var serviceId = $(this).find(':selected').val();
 		$.ajax({
-			url: '/admin/home/services/'+serviceId,
+			url: '/service/'+serviceId,
 			dataType: 'json'
 		})
 			.done(function(serverData) {
 				var $form = $('#service-form');
-				$form.attr('action', '/admin/home/services/'+serviceId)
+				$form.attr('action', '/service/'+serviceId)
 				$('#edit_service_title').attr('value',serverData.title);
 				$('#edit_service_description').html(serverData.description);
 
 				$('#edit_service_title').prop('disabled',false);
 				$('#edit_service_description').prop('disabled',false);
+				$('#edit_service_button').prop('disabled',false);
 
 				$('#service-preview i').addClass('fa '+serverData.icon);
 				$('#service-preview h2').html(serverData.title);
@@ -65,7 +66,7 @@ ready = function() {
 		$formData = $('#service-form').serialize();
 
 		$.ajax({
-			url: '/admin/home/services/'+serviceId,
+			url: '/service/'+serviceId,
 			dataType: 'json',
 			type: 'put',
 			data: $formData
@@ -91,5 +92,5 @@ ready = function() {
 
 }
 
-$(document).ready(ready);
-$(document).on('page:load',ready);
+$(document).ready(home_admin_ready);
+$(document).on('page:load',home_admin_ready);

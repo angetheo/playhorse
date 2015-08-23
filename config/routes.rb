@@ -1,25 +1,44 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  # Reminder: admin is only navigation and session control, since we don't have a database behind.
+  # Reminder: every resource backed by a db should have its own restful routing.
+
+  #########
+  # ADMIN #
+  #########
+
+  namespace :admin do
+    # ROOT
+    root to: 'home#index'
+    # SESSION
+    match 'login' => 'admin#login', via: [:get, :post]
+    get 'logout' => 'admin#logout'
+    # PAGES
+    get 'articles' => 'articles#index'
+    get 'events' => 'events#index'
+  end
+
+  #############
+  # RESOURCES #
+  #############
 
   # FAQ
-  resources :faqs
+  resources :faq
+  # ARTICLES
   resources :articles
-
-  # ABOUT
-  get '/about' => 'about#index'
-  
-  # ADMIN LOGIN/LOGOUT
-  match '/admin/login' => 'admin/admin#login', via: [:get, :post]
-  get '/admin/logout' => 'admin/admin#logout'
-  get '/admin' => 'admin/home#index'
-
   # CAROUSEL
-  get '/admin/home/carousel/:id' => 'carousel#show'
-  put '/admin/home/carousel/:id' => 'carousel#edit'
-
+  resources :carousel, only: [:show, :update]
   # SERVICES
-  get '/admin/home/services/:id' => 'service#show'
-  put '/admin/home/services/:id' => 'service#edit'
+  resources :service, only: [:show, :update]
+  # EVENTS
+  resources :events
+
+  ##############
+  # NAVIGATION #
+  ##############
+
+  root 'home#index'
+  get '/about' => 'about#index'
+
 
 end

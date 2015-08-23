@@ -181,9 +181,11 @@ ready = function() {
 	/* RESPONSIVE CALENDAR
 	/*-------------------------------*/
 
-	$('.responsive-calendar').responsiveCalendar({
-		translateMonths: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
-	});
+	if($('.responsive-calendar').length > 0) {
+		$('.responsive-calendar').responsiveCalendar({
+			translateMonths: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
+		});
+	}
 
 
 	/*--------------------------------/

@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' %>
   <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300" %>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'admin/admin_application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <meta charset="utf-8">
@@ -18,7 +18,7 @@
 
 	<div class="wrapper">
 
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -29,7 +29,7 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <a class="navbar-brand navbar-logo" href="/" style="position:relative; top:-7px;">
-		      	<%= image_tag('logo/logo_new_black.png', alt: 'Play Horse Farm') %>
+		      	<%= image_tag('logo/logo_new_white.png', alt: 'Play Horse Farm') %>
 		      </a>
 		    </div>
 
@@ -38,7 +38,7 @@
 		      <ul class="nav navbar-nav navbar-right">
 		        <li><a href="/admin">Home</a></li>
 		        <li><a href="/admin/articles">News</a></li>
-		        <li><a href="#">Link</a></li>
+		        <li><a href="/admin/events">Eventi</a></li>
 		        <li><a href="#">Link</a></li>
 		        <li><a href="/admin/logout">Logout</a></li>
 		      </ul>

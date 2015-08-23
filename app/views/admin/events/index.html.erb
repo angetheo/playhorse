@@ -1,0 +1,160 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">EVENTI</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione di eventi e manifestazioni equestri
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+        <hr>
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#new_event_modal"><i class="fa fa-plus"></i> &nbsp; NUOVO EVENTO</button>
+        <h4><i class="fa fa-newspaper-o"></i> Manifestazioni equestri <small>> Gestione delle manifestazioni</small></h4>
+        <hr>
+
+        <table class="table table-hover table-responsive">
+          <col width="5%">
+          <col width="15%">
+          <col width="40%">
+          <col width="6%">
+          <col width="6%">
+          <col width="6%">
+          <col width="6%">
+          <col width="16%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Data</th>
+              <th>Categoria</th>
+              <th>P</th>
+              <th>O</th>
+              <th>C</th>
+              <th>R</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @events.each do |event| %>
+            <tr>
+              <td><%= event.id %></td>
+              <td><%= event.date %></td>
+              <td><%= event.name %></td>
+              <td><%= event.program.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td><%= event.hours.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td><%= event.announcement.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td><%= event.result.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td>
+                <a class="btn btn-success btn-xs" style="width:25px" href="/events"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-warning btn-xs edit_event" style="width:25px" href="/events/<%= event.id %>"><i class="fa fa-edit"></i></a>
+                <form action="/events/<%= event.id %>" method="post" style="display:inline" onsubmit="return confirm('Vuoi davvero cancellare l\'evento selezionato?');">
+                  <button class="btn btn-danger btn-xs" style="width:25px" type="submit", name="_method" value="delete"><i class="fa fa-trash"></i></button>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                </form>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+      <!-- NEW EVENT MODAL -->
+      <div class="modal fade" id="new_event_modal" tabindex="-1" role="dialog" aria-labelledby="new_event_modal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="new_event_title"><i class="fa fa-edit"></i> Pubblica un nuovo evento</h4>
+            </div>
+            <div class="modal-body">
+              <form action="/events" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="event_date">Data</label>
+                  <input type="text" class="form-control" id="event_date" name="event_date" placeholder="YYYY-MM-DD" required>
+                </div>
+                <div class="form-group">
+                  <label for="event_name">Categoria (nome evento)</label>
+                  <input type="text" class="form-control" id="event_name" name="event_name" placeholder="Nome ..." required>
+                </div>
+                <div class="form-group">
+                  <label for="file_program">Carica programma</label>
+                  <input type="file" id="file_program" name="file_program" value="">
+                </div>
+                <div class="form-group">
+                  <label for="file_hours">Carica orari</label>
+                  <input type="file" id="file_hours" name="file_hours" value="">
+                </div>
+                <div class="form-group">
+                  <label for="file_announcement">Carica comunicazioni</label>
+                  <input type="file" id="file_announcement" name="file_announcement" value="">
+                </div>
+                <div class="form-group">
+                  <label for="file_result">Carica risultati</label>
+                  <input type="file" id="file_result" name="file_result" value="">
+                </div>
+                <hr>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                <button type="submit" class="btn btn-primary">Pubblica</button>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END MODAL -->
+
+    <!-- EDIT EVENT MODAL -->
+    <div class="modal fade" id="edit_event_modal" tabindex="-1" role="dialog" aria-labelledby="edit_event_modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="edit_event_title"><i class="fa fa-edit"></i> Modifica il concorso</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post">
+              <div class="form-group">
+                <label for="edit_event_date">Data (YYYY-MM-DD)</label>
+                <input type="text" class="form-control" id="edit_event_date" name="edit_event_date" placeholder="YYYY-MM-DD" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_event_name">Categoria (Nome)</label>
+                <input type="text" class="form-control" id="edit_event_name" name="edit_event_name" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_file_program">Modifica file programma</label>
+                <input type="file" id="edit_file_program" name="edit_file_program" value="">
+              </div>
+              <div class="form-group">
+                <label for="edit_file_hours">Modifica file orari</label>
+                <input type="file" id="edit_file_hours" name="edit_file_hours" value="">
+              </div>
+              <div class="form-group">
+                <label for="edit_file_announcement">Modifica file comunicazioni</label>
+                <input type="file" id="edit_file_announcement" name="edit_file_announcement" value="">
+              </div>
+              <div class="form-group">
+                <label for="edit_file_result">Modifica file risultati</label>
+                <input type="file" id="edit_file_result" name="edit_file_result" value="">
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+              <button type="submit" class="btn btn-primary">Modifica</button>
+              <input type="hidden" name="_method" value="put">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL -->

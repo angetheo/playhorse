@@ -38,3 +38,17 @@ Service.destroy_all
     icon: 'fa-user'
 	})
 end
+
+Event.destroy_all
+10.times do
+  Event.create({
+    date: rand(2014..2015).to_s+"/"+rand(1..12).to_s+"/"+rand(1..31).to_s,
+    name: "Concorso n. "+rand(100..400).to_s,
+    program: ["www.something.com", ""].sample,
+    hours: ["www.something.com", ""].sample,
+    announcement: ["www.something.com", ""].sample,
+    result: ["www.something.com", ""].sample
+  })
+end
+
+puts "Seeding completed."
