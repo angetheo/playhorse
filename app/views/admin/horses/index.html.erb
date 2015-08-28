@@ -1,0 +1,194 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">SCUDERIA</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione della vendita dei cavalli e delle testimonianze
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+        <hr>
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#new_horse_modal"><i class="fa fa-plus"></i> &nbsp; AGGIUNGI CAVALLO</button>
+        <h4><i class="fa fa-paw"></i> Scuderia <small>> Gestione cavalli</small></h4>
+        <hr>
+
+        <table class="table table-hover table-responsive">
+          <col width="5%">
+          <col width="25%">
+          <col width="25%">
+          <col width="20%">
+          <col width="5%">
+          <col width="5%">
+          <col width="15%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Nazionalità</th>
+              <th>Categoria</th>
+              <th>Video</th>
+              <th>Curriculum</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @horses.each do |horse| %>
+            <tr>
+              <td><%= horse.id %></td>
+              <td><%= horse.name %></td>
+              <td><%= horse.nation %></td>
+              <td><%= horse.category.capitalize %></td>
+              <td><%= horse.video.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td><%= horse.cv_url.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td>
+                <a class="btn btn-success btn-xs" style="width:25px" href="/horses"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-warning btn-xs edit_horse" style="width:25px" href="/horse/<%= horse.id %>"><i class="fa fa-edit"></i></a>
+                <form action="/horses/<%= horse.id %>" method="post" style="display:inline" onsubmit="return confirm('Vuoi davvero cancellare il cavallo selezionato?');">
+                  <button class="btn btn-danger btn-xs" style="width:25px" type="submit", name="_method" value="delete"><i class="fa fa-trash"></i></button>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                </form>
+              </td>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+     <!-- NEW HORSE MODAL -->
+    <div class="modal fade" id="new_horse_modal" tabindex="-1" role="dialog" aria-labelledby="new_horse_modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="new_horse_title"><i class="fa fa-edit"></i> Inserisci un nuovo cavallo</h4>
+          </div>
+          <div class="modal-body">
+            <form action="/horses" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="horse_name">Nome</label>
+                <input type="text" class="form-control" id="horse_name" name="horse_name" placeholder="Nome ..." required>
+              </div>
+              <div class="form-group">
+                <label for="horse_father">Padre</label>
+                <input type="text" class="form-control" id="horse_father" name="horse_father" placeholder="Padre ...">
+              </div>
+              <div class="form-group">
+                <label for="horse_mother">Madre</label>
+                <input type="text" class="form-control" id="horse_mother" name="horse_mother" placeholder="Madre ...">
+              </div>
+              <div class="form-group">
+                <label for="horse_year_of_birth">Anno di nascita</label>
+                <input type="text" class="form-control" id="horse_year_of_birth" name="horse_year_of_birth" placeholder="Anno ...">
+              </div>
+              <div class="form-group">
+                <label for="horse_nation">Nazione</label>
+                <%= render 'nations_list' %>
+              </div>
+              <div class="form-group">
+                <label for="horse_cv_url">URL Curriculum</label>
+                <input type="text" class="form-control" id="horse_cv_url" name="horse_cv_url" placeholder="URL ...">
+              </div>
+              <div class="form-group">
+                <label for="horse_category">Categoria</label>
+                <select class="form-control" id="horse_category" name="horse_category">
+                  <option value="cavallo" selected="selected">Cavallo</option>
+                  <option value="pony">Pony</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="horse_description">Descrizione</label>
+                <textarea class="form-control" id="horse_description" name="horse_description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="horse_video">URL Youtube del video</label>
+                <input type="text" class="form-control" id="horse_video" name="horse_video" placeholder="URL del video">
+              </div>
+              <div class="form-group">
+                <label for="horse_pictures">Immagine</label>
+                <input type="file" id="horse_picture" name="horse_picture" value="" required>
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+              <button type="submit" class="btn btn-primary">Pubblica</button>
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END NEW HORSE MODAL -->
+
+    <!-- EDIT HORSE MODAL -->
+    <div class="modal fade" id="edit_horse_modal" tabindex="-1" role="dialog" aria-labelledby="edit_horse_modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="edit_horse_title"><i class="fa fa-edit"></i> Modifica le informazioni del cavallo</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="edit_horse_name">Nome</label>
+                <input type="text" class="form-control" id="edit_horse_name" name="edit_horse_name">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_father">Padre</label>
+                <input type="text" class="form-control" id="edit_horse_father" name="edit_horse_father">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_mother">Madre</label>
+                <input type="text" class="form-control" id="edit_horse_mother" name="edit_horse_mother">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_year_of_birth">Anno di nascita</label>
+                <input type="text" class="form-control" id="edit_horse_year_of_birth" name="edit_horse_year_of_birth">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_nation">Nazione</label>
+                <%= render 'nations_list' %>
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_category">Categoria</label>
+                <select class="form-control" id="edit_horse_category" name="edit_horse_category">
+                  <option value="cavallo">Cavallo</option>
+                  <option value="pony">Pony</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_description">Descrizione</label>
+                <textarea class="form-control" id="edit_horse_description" name="edit_horse_description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_cv_url">URL del Curriculum</label>
+                <input type="text" class="form-control" id="edit_horse_cv_url" name="edit_horse_cv_url">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_video">URL del video</label>
+                <input type="text" class="form-control" id="edit_horse_video" name="edit_horse_video">
+              </div>
+              <div class="form-group">
+                <label for="edit_horse_pictures">Immagine</label>
+                <input type="file" id="edit_horse_picture" name="edit_horse_picture" value="">
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+              <button type="submit" class="btn btn-primary">Modifica</button>
+              <input type="hidden" name="_method" value="put">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL -->

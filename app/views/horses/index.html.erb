@@ -1,0 +1,155 @@
+    <% title "Vendita cavalli" %>
+
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">SRL <small>> Selezione e vendita cavalli da salto ostacoli</small></h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="#">SRL</a>
+          </li>
+          <li class="active">Selezione e vendita cavalli</li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container">
+
+      <!-- MISSION -->
+      <section>
+        <h2 class="section-heading">LA NOSTRA FILOSOFIA</h2>
+        <p class="lead text-justify">Selezionare e un buon cavallo da concorso non è sempre facile. Proporre il cavallo giusto alla persona giusta lo è ancora meno. L’esperienza, la cura e la responsabilità in questo percorso sono fondamentali quanto la gradualità nell’addestramento di ogni esemplare. E’ questa la filosofia che vogliamo trasmettere a chi si rivolge a noi. Amiamo il nostro lavoro fino alla fine, siamo presenti in ogni fase della scelta e dell’acquisto e forniamo assistenza anche successivamente, stipulando insieme a voi accordi e garanzie post-vendita.</p>
+        <hr>
+      </section>
+      <!-- END MISSION -->
+
+            <!-- HORSE MANAGER -->
+      <section>
+        <h2 class="text-center">I CAVALLI IN VENDITA</h2>
+        <h2 class="no-mobile text-center"><small>Muovi il mouse sopra le foto per visualizzare i dettagli su ogni cavallo.</small></h2>
+        <h2 class="no-desktop text-center"><small>Tocca le immagini di ogni cavallo per visualizzarne i dettagli.</small></h2>
+        <br>
+        <!-- ITEM FILTERS -->
+        <ul class="list-inline portfolio-item-filters">
+          <li>
+            <a class="btn btn-sm btn-primary active" href="#" data-filter="*">TUTTI</a>
+          </li>
+          <li>
+            <a class="btn btn-sm" href="#" data-filter=".cavallo">CAVALLI</a>
+          </li>
+          <li>
+            <a class="btn btn-sm" href="#" data-filter=".pony">PONY</a>
+          </li>
+        </ul>
+        <!-- END ITEM FILTERS -->
+
+        <% if !@horses.empty? %>
+        <!-- PORTFOLIO ITEM WRAPPER -->
+        <div class="portfolio-item-wrapper" style="opacity:0">
+          <ul class="portfolio-item-list portfolio-isotope portfolio-nospace">
+            <% @horses.each do |horse| %>
+            <li class="portfolio-item <%= horse.category %>" style="border:1px solid gray">
+              <div class="overlay"></div>
+              <div class="info" style="padding:5px">
+                <h4 class="title"><%= horse.name %></h4>
+                <p class="brief-description">Cavallo nato nel <%= horse.year_of_birth %>. Nazione: <%= horse.nation %></p>
+                <a href="#" class="btn horse-details" id="<%= horse.id %>">Maggiori info</a>
+              </div>
+              <div class="media-wrapper">
+                <img src="<%= horse.picture %>" alt="Horse picture">
+              </div>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- END PORTFOLIO ITEM WRAPPER -->
+        <% else %>
+        <div class="text-center" style="padding:30px">
+          <p>Non ci sono cavalli disponibili. Riprova più tardi o contattaci per maggiori informazioni!</p>
+        </div>
+        <% end %>
+        <hr>
+      </section>
+      <!-- END HORSE MANAGER -->
+
+      <!-- YOUR HORSE -->
+      <section>
+        <h2 class="section-heading">VUOI VENDERE IL TUO CAVALLO?</h2>
+        <p>Siamo a disposizione per una valutazione del tuo cavallo. Non esitare a contattarci utilizzando il <a href="/#contact">modulo</a> nella home page, oppure contattandoci all'indirizzo <a href="mailto:supporto@playhorsefarm.com">supporto@playhorsefarm.com</a> specificando il nome completo del cavallo, una breve descrizione tecnica e una o più foto e video. Non dimenticare di lasciarci un tuo recapito per essere ricontattato dal nostro staff!</p>
+        <p>Siamo pronti a stipulare accordi di varia natura, generalmente così articolati:
+          <ul>
+            <li>Acquistiamo direttamente</li>
+            <li>Conto vendita senza alcun costo per il proprietario</li>
+            <li>In lavoro con costi per il proprietario ed accordi personalizzati</li>
+          </ul>
+        </p>
+      </section>
+      <!-- END YOUR HORSE -->
+
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+    <!-- CALL-TO-ACTION -->
+    <section class="call-to-action">
+      <div class="container">
+        <div class="pull-left">
+          <h2 class="section-heading">SEI INTERESSATO AD UNO DEI NOSTRI ESEMPLARI?</h2>
+        </div>
+        <div class="pull-right">
+          <a href="/#contact" class="btn btn-lg btn-primary">CONTATTACI QUI</a>
+        </div>
+      </div>
+    </section>
+    <!-- END CALL-TO-ACTION -->
+
+    <!-- HORSE DETAILS MODAL -->
+    <div class="modal fade" id="horse_details" tabindex="-1" role="dialog" aria-labelledby="horse_details" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color:#8AA026">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="horse_details_title" style="color:#fff"><i class="fa fa-edit"></i> Scheda cavallo</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img src="" id="horse_picture" style="width:100%; border-radius:15px">
+              </div>
+              <div class="col-md-6">
+                <h3>Dettagli</h3>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p><strong>Nome</strong>: <span id="horse_name"></span></p>
+                    <p><strong>Padre</strong>: <span id="horse_father">Non disponibile</span></p>
+                    <p><strong>Madre</strong>: <span id="horse_mother">Non disponibile</span></p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><strong>Nato nel</strong>: <span id="horse_year_of_birth">Non disponibile</span></p>
+                    <p><strong>Nazione</strong>: <span id="horse_nation">Non disponibile</span></p>
+                    <a href="#" class="btn btn-primary btn-xs" id="horse_cv_url" target="_blank">Guarda Curriculum</a>
+                  </div>
+                </div>
+                <hr>
+                <h3>Video</h3>
+                <iframe src="" frameborder="0" style="width:100%" height=200 allowfullscreen></iframe>
+              </div>
+            </div>
+            <hr>
+            <div style="padding:15px;">
+              <h3>Descrizione:</h3>
+              <p id="horse_description" class="lead">Non disponibile</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL -->
+

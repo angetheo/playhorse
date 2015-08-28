@@ -17,6 +17,8 @@
 //= require slick
 //= require stellar
 //= require fitvids
+//= require imagesLoaded.pkgd.min
+//= require isotope.pkgd.min
 //= require parsley
 //= require responsive-calendar.min
 //= require tinymce/tinymce.min

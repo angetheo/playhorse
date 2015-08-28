@@ -1,3 +1,5 @@
+puts "Starting seeding..."
+
 Carousel.destroy_all
 3.times do
   Carousel.create({
@@ -48,6 +50,22 @@ Event.destroy_all
     hours: ["www.something.com", ""].sample,
     announcement: ["www.something.com", ""].sample,
     result: ["www.something.com", ""].sample
+  })
+end
+
+Horse.destroy_all
+10.times do
+  Horse.create({
+    name: Faker::Name.first_name,
+    father: Faker::Name.first_name,
+    mother: Faker::Name.first_name,
+    year_of_birth: rand(2000..2014),
+    nation: Faker::Address.country,
+    cv_url: 'http://www.something.com',
+    category: ['cavallo','pony'].sample,
+    description: 'fake description here',
+    picture: Faker::Avatar.image('horse'+rand(1..100).to_s, '200x200'),
+    video: ''
   })
 end
 
