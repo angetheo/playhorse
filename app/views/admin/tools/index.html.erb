@@ -1,0 +1,82 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">IMPOSTAZIONI</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione di impostazioni generali e strumenti
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+        <!-- EXTERNAL TOOLS -->
+        <h4><i class="fa fa-cog"></i> Strumenti esterni <small>> Gestisci gli strumenti esterni e visualizza le statistiche sui visitatori.</small></h4>
+        <hr>
+        <div class="row text-center">
+          <div class="col-md-3">
+            <a href="https://outlook.office365.com" target="_blank">
+              <div class="hospitality-box">
+                <i class="fa fa-envelope-o fa-3x"></i>
+                <h4>E-mail</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="https://dashboard.zopim.com" target="_blank">
+              <div class="hospitality-box">
+                <i class="fa fa-wechat fa-3x"></i>
+                <h4>Entra in live chat</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="http://www.google.com/analytics/" target="_blank">
+              <div class="hospitality-box">
+                <i class="fa fa-line-chart fa-3x"></i>
+                <h4>Google Analytics</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="https://www.google.com/webmasters/tools/home?hl=en" target="_blank">
+              <div class="hospitality-box">
+                <i class="fa fa-code fa-3x"></i>
+                <h4>Google Webmaster Tools</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- END EXTERNAL TOOLS -->
+
+        <!-- LIMITS -->
+        <h4><i class="fa fa-bar-chart"></i> Limiti <small>> Controlla i limiti posti dai servizi che utilizzi.</small></h4>
+        <hr>
+
+        <div class="row">
+          <div class="col-md-6 text-left">
+            <div class="info-chart">
+              <div class="pie-chart" data-percent="<%= bucket_size_left('playhorse') %>">
+                <span class="percent"><%= bucket_size_left('playhorse') %>%</span>
+              </div>
+              <span class="chart-title">Spazio residuo su Amazon S3 <h5>(Costo mensile stimato: 0.0€)</h5></span>
+            </div>
+          </div>
+          <div class="col-md-6 text-left">
+            <div class="info-chart">
+              <% rows_left_percentage = rows_left/10_000.to_f*100 %>
+              <div class="pie-chart" data-percent="<%= rows_left_percentage %>">
+                <span class="percent"><%= rows_left_percentage %>%</span>
+              </div>
+              <span class="chart-title">Spazio residuo sul database<h5>Se lo spazio sta per terminare contatta il webmaster.</h5></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>

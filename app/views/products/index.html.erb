@@ -1,0 +1,85 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">SRL <small>> Vendita attrezzature</small></h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="#">SRL</a>
+          </li>
+          <li class="active">Vendita attrezzature</li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container">
+
+      <!-- MISSION -->
+      <section>
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="section-heading">LE NOSTRE ATTREZZATURE</h2>
+            <p class="lead text-justify">Mettiamo al vostro servizio la nostra esperienza per garantire il massimo della qualità dei prodotti e delle attrezzature per voi e i vostri cavalli, solo il meglio fin nei dettagli. Un’ampia scelta anche tra le offerte dell’usato per soddisfare le esigenze più disparate e offrirvi sempre il miglior rapporto qualità/prezzo!</p>
+            <hr class="no-desktop">
+          </div>
+          <div class="col-md-6 text-center">
+            <%= image_tag('various/attrezzature.png', alt: 'Attrezzature', style: 'width:75%; border-radius:10px') %>
+          </div>
+        </div>
+        <hr>
+      </section>
+      <!-- END MISSION -->
+
+      <!-- SEARCH FORM -->
+      <section>
+        <h2 class="text-center">COSA STAI CERCANDO?</h2><br>
+        <form class="form-horizontal" action="/srl/vendita-attrezzature" method="post" id="search-form">
+          <div class="form-group">
+            <label for="category" class="col-sm-2 control-label">Categoria</label>
+            <div class="col-sm-8">
+              <select id="category" class="form-control" name="category">
+                <option value="">Scegli una categoria...</option>
+                <option disabled="disabled">------------</option>
+                <option value="van">Van</option>
+                <option value="box">Box</option>
+                <option value="ostacoli">Ostacoli</option>
+                <option value="campi">Realizzazione campi</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group type hidden">
+            <label for="type" class="col-sm-2 control-label">Tipologia</label>
+            <div class="col-sm-8">
+              <select id="type" class="form-control" name="type">
+                <option value="">Scegli un'opzione...</option>
+                <option disabled="disabled">------------</option>
+                <option value="nuovo" id="nuovo">Nuovo</option>
+                <option value="usato" id="usato">Usato</option>
+                <option value="trasporto" id="trasporto" disabled="disabled">Trasporti Ippici</option>
+                <option value="noleggio" id="noleggio" disabled="disabled">Noleggio</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary hidden" id="search-button">Cerca</button>
+            </div>
+          </div>
+        </form>
+        <hr>
+      </section>
+      <!-- END SEARCH FORM -->
+
+      <!-- START PAGE RESULTS -->
+      <section id="search-results" style="display:none">
+
+      </section>
+      <!-- END PAGE RESULTS -->
+
+      </div>
+    </div>

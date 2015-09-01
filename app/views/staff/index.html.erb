@@ -1,0 +1,160 @@
+<% title "Chi siamo" %>
+
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">CHI SIAMO</h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li class="active">Chi siamo</li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container">
+
+        <!-- DESCRIPTION -->
+        <section>
+          <div class="row">
+            <div class="col-md-6 text-justify">
+              <h3>Benvenuti!</h3>
+              <p>La <b>Play Horse Farm</b> è un'azienda che nasce da realtà totalmente autonome ma complementari ma che operano in sincronia tra loro. Un contenitore che, nel tempo, si è arricchito di figure professionali che hanno dato vita a progetti di passione e innovazione. In particolare, l'area dedicata alla ricettività e alla ristorazione, entrambe valore aggiunto del club che ospita sui suoi campi gara le manifestazioni equestri, offrendo così ai numerosi partecipanti un ambiente ospitale e funzionale in una location davvero suggestiva.</p>
+              <p>E' con orgoglio, inoltre, che ci dedichiamo al nostro allevamento di cavalli da salto, i nostri futuri campioni, e al comparto agricolo che, con la produzione di cereali e foraggi, costituisce una preziosa risorsa. Questi, in sintesi, sono solo alcuni degli esempi di come funzioni il sistema <b>Play Horse</b>, una vera e propria "filiera corta" che ruota attorno al cavallo, al cavaliere e al loro benessere.</p><br>
+            </div>
+            <div class="col-md-6">
+              <div class="featured-video">
+                <iframe src="https://www.youtube.com/embed/2ls-iYDdrwk" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+          <br>
+          <hr>
+        </section>
+
+        <!-- SRL TEAM -->
+        <section class="team">
+          <h2 class="section-heading">LO STAFF <small>> Play Horse SRL (Via G. Ferrari, 4 00195 Roma)</small></h2>
+          <div class="section-content">
+
+            <% @staff_srl.each_slice(2) do |staff_row| %>
+            <div class="row">
+
+              <div class="col-md-5">
+                <div class="team-member media">
+                  <%= image_tag(staff_row[0].picture, alt: staff_row[0].name, class: 'media-object img-circle pull-left staff-img') %>
+                  <div class="media-body">
+                    <h3 class="media-heading team-name"><%= staff_row[0].name %></h3>
+                    <strong><%= staff_row[0].role %></strong>
+                    <hr class="pull-left">
+                    <div class="clearfix"></div>
+                    <ul class="list-inline social-icon">
+                      <li><%= contact_for(staff_row[0], 'phone') %></li>
+                      <li><%= contact_for(staff_row[0], 'mail') %></li>
+                      <li><%= contact_for(staff_row[0], 'facebook') %></li>
+                      <li><%= contact_for(staff_row[0], 'linkedin') %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <% if staff_row[1] %>
+              <div class="col-md-5 col-md-offset-2">
+                <div class="team-member media">
+                  <%= image_tag(staff_row[1].picture, alt: staff_row[1].name, class: 'media-object img-circle pull-left staff-img') %>
+                  <div class="media-body">
+                    <h3 class="media-heading team-name"><%= staff_row[1].name %></h3>
+                    <strong><%= staff_row[1].role %></strong>
+                    <hr class="pull-left">
+                    <div class="clearfix"></div>
+                    <ul class="list-inline social-icon">
+                      <li><%= contact_for(staff_row[1], 'phone') %></li>
+                      <li><%= contact_for(staff_row[1], 'mail') %></li>
+                      <li><%= contact_for(staff_row[1], 'facebook') %></li>
+                      <li><%= contact_for(staff_row[1], 'linkedin') %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+
+            </div>
+            <% end %>
+
+          </div>
+        </section>
+        <!-- END SRL TEAM -->
+
+        <!-- ASD TEAM -->
+        <section class="team">
+          <h2 class="section-heading">LO STAFF <small>> ASD Play Horse Club Umbria (Vocabolo Pupigliano, 25 05020 Alviano (TR))</small></h2>
+          <div class="section-content">
+
+            <% @staff_asd.each_slice(2) do |staff_row| %>
+            <div class="row">
+
+              <div class="col-md-5">
+                <div class="team-member media">
+                  <%= image_tag(staff_row[0].picture, alt: staff_row[0].name, class: 'media-object img-circle pull-left staff-img') %>
+                  <div class="media-body">
+                    <h3 class="media-heading team-name"><%= staff_row[0].name %></h3>
+                    <strong><%= staff_row[0].role %></strong>
+                    <hr class="pull-left">
+                    <div class="clearfix"></div>
+                    <ul class="list-inline social-icon">
+                      <li><%= contact_for(staff_row[0], 'phone') %></li>
+                      <li><%= contact_for(staff_row[0], 'mail') %></li>
+                      <li><%= contact_for(staff_row[0], 'facebook') %></li>
+                      <li><%= contact_for(staff_row[0], 'linkedin') %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <% if staff_row[1] %>
+              <div class="col-md-5 col-md-offset-2">
+                <div class="team-member media">
+                  <%= image_tag(staff_row[1].picture, alt: staff_row[1].name, class: 'media-object img-circle pull-left staff-img') %>
+                  <div class="media-body">
+                    <h3 class="media-heading team-name"><%= staff_row[1].name %></h3>
+                    <strong><%= staff_row[1].role %></strong>
+                    <hr class="pull-left">
+                    <div class="clearfix"></div>
+                    <ul class="list-inline social-icon">
+                      <li><%= contact_for(staff_row[1], 'phone') %></li>
+                      <li><%= contact_for(staff_row[1], 'mail') %></li>
+                      <li><%= contact_for(staff_row[1], 'facebook') %></li>
+                      <li><%= contact_for(staff_row[1], 'linkedin') %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+
+            </div>
+            <% end %>
+
+          </div> <!-- END SECTION CONTENT -->
+        </section>
+        <!-- END ASD TEAM -->
+
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+    <!-- CALL-TO-ACTION -->
+    <section class="call-to-action">
+      <div class="container">
+        <div class="pull-left">
+          <h2 class="section-heading">DOMANDE?</h2>
+        </div>
+        <div class="pull-right">
+          <span>Chiamaci al +39 331 899 0312 oppure </span>&nbsp;&nbsp;<a href="/#contact" class="btn btn-lg btn-primary">CONTATTACI QUI</a>
+        </div>
+      </div>
+    </section>
+    <!-- END CALL-TO-ACTION -->

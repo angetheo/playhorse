@@ -69,4 +69,31 @@ Horse.destroy_all
   })
 end
 
+Product.destroy_all
+10.times do
+  Product.create({
+    category: ['van','box','ostacoli','campi'].sample,
+    product_type: ['nuovo','usato','noleggio','trasporto'].sample,
+    name: Faker::Commerce.product_name,
+    description: Faker::Company.bs,
+    picture: Faker::Avatar.image('horse'+rand(1..100).to_s, '200x200')
+  })
+end
+
+Staff.destroy_all
+orders = (1..10).to_a.shuffle
+10.times do
+  Staff.create({
+    name: Faker::Name.name,
+    division: ['asd','srl'].sample,
+    role: Faker::Name.title,
+    order: orders.pop,
+    picture: Faker::Avatar.image('staff'+rand(1..100).to_s, '200x200'),
+    facebook: ['some facebook url', ''].sample,
+    mail: ['email@email.com',''].sample,
+    phone: ['123456789',''].sample,
+    linkedin: ['linkedin.com/doge',''].sample
+  })
+end
+
 puts "Seeding completed."

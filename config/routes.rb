@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  
-  namespace :admin do
-  get 'horses/index'
-  end
 
   # Reminder: admin is only navigation and session control, since we don't have a database behind.
   # Reminder: every resource backed by a db should have its own restful routing.
@@ -21,6 +17,10 @@ Rails.application.routes.draw do
     get 'articles' => 'articles#index'
     get 'events' => 'events#index'
     get 'horses' => 'horses#index'
+    get 'faq' => 'faq#index'
+    get 'products' => 'products#index'
+    get 'staff' => 'staff#index'
+    get 'tools' => 'tools#index'
   end
 
   #############
@@ -39,13 +39,17 @@ Rails.application.routes.draw do
   resources :events
   # HORSES
   resources :horses
+  # PRODUCTS
+  resources :products
+  post 'products/search' => 'products#search'
+  # STAFF
+  resources :staff
 
   ##############
   # NAVIGATION #
   ##############
 
   root 'home#index'
-  get '/about' => 'about#index'
 
 
 end

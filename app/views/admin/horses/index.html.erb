@@ -50,7 +50,7 @@
               <td><%= horse.cv_url.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
               <td>
                 <a class="btn btn-success btn-xs" style="width:25px" href="/horses"><i class="fa fa-eye"></i></a>
-                <a class="btn btn-warning btn-xs edit_horse" style="width:25px" href="/horse/<%= horse.id %>"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-warning btn-xs edit_horse" style="width:25px" href="/horses/<%= horse.id %>"><i class="fa fa-edit"></i></a>
                 <form action="/horses/<%= horse.id %>" method="post" style="display:inline" onsubmit="return confirm('Vuoi davvero cancellare il cavallo selezionato?');">
                   <button class="btn btn-danger btn-xs" style="width:25px" type="submit", name="_method" value="delete"><i class="fa fa-trash"></i></button>
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>

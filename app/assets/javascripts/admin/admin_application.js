@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require wow
 //= require parsley
+//= require easypiechart
 //= require tinymce/tinymce.min
 //= require repute
 //= require turbolinks

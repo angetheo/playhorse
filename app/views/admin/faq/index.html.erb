@@ -1,0 +1,129 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">FAQ</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione delle Frequently Asked Questions
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+        <hr>
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#new_faq_modal"><i class="fa fa-plus"></i> &nbsp; AGGIUNGI FAQ</button>
+        <h4><i class="fa fa-question"></i> Faq <small>> Gestione domande freqenti</small></h4>
+        <hr>
+
+        <% @categorized_faqs.each do |faqs_array| %>
+        <!-- Table -->
+        <table class="table">
+          <col width="5%">
+          <col width="15%">
+          <col width="30%">
+          <col width="35%">
+          <col width="15%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Categoria</th>
+              <th>Domanda</th>
+              <th>Risposta</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% faqs_array.each do |faq| %>
+            <tr>
+              <td><%= faq.id %></td>
+              <td><%= faq.category %></td>
+              <td><%= faq.question.length > 30 ? faq.question[0..30]+"..." : faq.question %></td>
+              <td><%= faq.answer.length > 50 ? faq.answer[0..50]+"..." : faq.answer %></td>
+              <td>
+                <a class="btn btn-success btn-xs" style="width:25px" href="/faq"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-warning btn-xs edit_faq" style="width:25px" href="/faq/<%= faq.id %>"><i class="fa fa-edit"></i></a>
+                <form action="/faq/<%= faq.id %>" method="post" style="display:inline" onsubmit="return confirm('Vuoi davvero cancellare la FAQ selezionata?');">
+                  <button class="btn btn-danger btn-xs" style="width:25px" type="submit", name="_method" value="delete"><i class="fa fa-trash"></i></button>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                </form>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+<!-- NEW FAQ MODAL -->
+<div class="modal fade" id="new_faq_modal" tabindex="-1" role="dialog" aria-labelledby="new_faq_modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="new_faq_title"><i class="fa fa-edit"></i> Scrivi una nuova FAQ</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/faq" method="post">
+          <div class="form-group">
+            <label for="faq_category">Categoria</label>
+            <input type="text" class="form-control" id="faq_category" name="faq_category" placeholder="Categoria ...">
+          </div>
+          <div class="form-group">
+            <label for="faq_question">Domanda</label>
+            <input type="text" class="form-control" id="faq_question" name="faq_question" placeholder="Domanda...">
+          </div>
+          <div class="form-group">
+            <label for="faq_answer">Risposta</label>
+            <textarea rows="5" class="form-control" id="faq_answer" name="faq_answer" placeholder="Contenuto..."></textarea>
+          </div>
+          <hr>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+          <button type="submit" class="btn btn-primary">Pubblica</button>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL -->
+
+<!-- EDIT FAQ MODAL -->
+<div class="modal fade" id="edit_faq_modal" tabindex="-1" role="dialog" aria-labelledby="edit_faq_modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="new_faq_title"><i class="fa fa-edit"></i> Modifica la FAQ</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="form-group">
+            <label for="faq_category">Categoria</label>
+            <input type="text" class="form-control" id="edit_faq_category" name="edit_faq_category">
+          </div>
+          <div class="form-group">
+            <label for="faq_question">Domanda</label>
+            <input type="text" class="form-control" id="edit_faq_question" name="edit_faq_question">
+          </div>
+          <div class="form-group">
+            <label for="faq_answer">Risposta</label>
+            <textarea rows="8" class="form-control" id="edit_faq_answer" name="edit_faq_answer"></textarea>
+          </div>
+          <hr>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+          <button type="submit" class="btn btn-primary">Modifica</button>
+          <input type="hidden" name="_method" value="put">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL -->
