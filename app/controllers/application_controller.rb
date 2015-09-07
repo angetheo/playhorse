@@ -11,4 +11,28 @@ class ApplicationController < ActionController::Base
   		config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
 		end
 	end
+
+  def contact
+    options = {
+      :to => 'supporto@playhorsefarm.com',
+      :from => params[:contact_email],
+      :subject => params[:contact_subject],
+      :body => params[:contact_message],
+      :via => :smtp,
+      :via_options => {
+        :address => 'smtp.sendgrid.net',
+        :port => '587',
+        :domain => 'heroku.com',
+        :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+        :authentication => :plain,
+        :enable_starttls_auto => true
+        }
+    }
+
+    Pony.mail(options)
+
+    flash[:notice] = "<b>Messaggio Inviato!</b> Grazie per averci contattato! Ti risponderemo al più presto."
+    redirect_to :root
+  end
 end

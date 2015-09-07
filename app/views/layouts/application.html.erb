@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' %>
   <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300" %>
+  <%= favicon_link_tag %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -18,13 +19,6 @@
 
   <!-- FACEBOOK SDK -->
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.3&appId=72819141187";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
 
   <!-- WRAPPER -->
   <div class="wrapper">
@@ -76,9 +70,6 @@
                     <li>
                       <a href="/events">Manifestazioni equestri</a>
                     </li>
-              <!--  <li>
-                      <a href="/asd/campiestivi">Campi estivi</a>
-                    </li> -->
                   </ul>
                 </li>
                 <li class="dropdown ">
@@ -96,10 +87,10 @@
                   <a href="#">Azienda agricola <i class="fa fa-angle-right"></i></a>
                   <ul class="dropdown-menu" role="menu">
                     <li>
-                      <a href="/agr/allevamento">L'allevamento</a>
+                      <a href="/mares">L'allevamento</a>
                     </li>
                     <li>
-                      <a href="/agr/agriturismo">L'agriturismo</a>
+                      <a href="/agriturismo">L'agriturismo</a>
                     </li>
                   </ul>
                 </li>
@@ -107,7 +98,6 @@
             </li>
             <li><a href="/staff">CHI SIAMO</a></li>
             <li><a href="/articles">NEWS</a></li>
-            <!-- <li><a href="#">LAVORA CON NOI</a></li> -->
           </ul>
         </div>
         <!-- END MAIN NAVIGATION -->
@@ -148,8 +138,8 @@
                   <li><a href="/events">Manifestazioni equestri</a></li>
                   <li><a href="/horses">Selezione e vendita cavalli</a></li>
                   <li><a href="/products">Vendita e noleggio attrezzature</a></li>
-                  <li><a href="/agr/allevamento">Allevamento</a></li>
-                  <li><a href="/agr/agriturismo">Agriturismo e ospitalità</a></li>
+                  <li><a href="/mares">Allevamento</a></li>
+                  <li><a href="/agriturismo">Agriturismo e ospitalità</a></li>
                 </ul>
               </div>
               <div class="col-xs-6">
@@ -166,12 +156,13 @@
             <div class="newsletter">
               <h3 class="footer-heading">NEWSLETTER</h3>
               <p>Ricevi le ultime novità di Play Horse Farm direttamente sulla tua mail iscrivendoti alla newsletter:</p>
-              <form class="newsletter-form" method="post" action="/subscribe">
+              <form class="newsletter-form" method="post" action="/subscribers">
                 <div class="input-group input-group-lg">
-                  <input type="email" class="form-control" name="subscriber_email" placeholder="email@dominio.com">
+                  <input type="email" class="form-control" name="subscriber_email" placeholder="email@dominio.com" required>
                   <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-spinner fa-spin"></i><span>ISCRIVITI</span></button></span>
                 </div>
                 <div class="alert"></div>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
               </form>
             </div>
             <div class="social-connect">

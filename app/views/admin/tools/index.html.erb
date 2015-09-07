@@ -69,7 +69,7 @@
           </div>
           <div class="col-md-6 text-left">
             <div class="info-chart">
-              <% rows_left_percentage = rows_left/10_000.to_f*100 %>
+              <% rows_left_percentage = (rows_left/10_000.to_f*100).round(2) %>
               <div class="pie-chart" data-percent="<%= rows_left_percentage %>">
                 <span class="percent"><%= rows_left_percentage %>%</span>
               </div>

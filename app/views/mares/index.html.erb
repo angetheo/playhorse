@@ -1,0 +1,105 @@
+    <% title "Allevamento" %>
+
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">ALLEVAMENTO</h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li class="active">Azienda agricola > Allevamento</li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <section class="hero-unit-animated">
+      <div id="carousel-hero-animated" class="carousel">
+        <!-- Slide Wrapper -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <div class="container">
+              <div class="hero-left pull-left">
+                <div class="hero-text">
+                  <h2 class="hero-heading animated fadeIn animation-delay-5">A piccoli passi verso grandi successi</h2>
+                  <p class="lead animated fadeIn animation-delay-7">Ogni nuovo inizio somiglia a una promessa. E dal più inaspettato al più atteso, si rivelano sempre un’emozione da seguire con passione, traguardo dopo traguardo. Ma il potenziale è nulla senza la sua giusta direzione. E dai loro primi passi incerti verso i successi, non c’è soddisfazione più grande che accompagnarli con la dedizione che amiamo mettere in tutto ciò che facciamo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Slide Wrapper -->
+      </div>
+    </section>
+    <!-- END HERO UNIT -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container">
+
+        <section>
+          <h2 class="section-heading">LE NOSTRE FATTRICI</h2>
+          <div class="section-content">
+
+            <% if @mares.empty? %>
+            <h3>Al momento non ci sono fattrici da visualizzare.</h3>
+            <hr>
+            <% else %>
+              <% @mares.each_slice(2) do |mare_slice| %>
+              <div class="row" style="margin:30px 0">
+                <% mare_slice.each do |mare| %>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-xs-4 text-center">
+                      <img src="<%= mare.image.empty? ? image_path('placeholders/placeholder.png') : mare.image %>" class="img-responsive" style="border-radius:20px; width:150px; height:150px">
+                    </div>
+                    <div class="col-xs-8">
+                      <h3><%= mare.name %></h3>
+                      <hr>
+                      <p><%= mare.description %></p>
+                    </div>
+                  </div>
+                </div>
+                <hr class="no-desktop">
+                <% end %>
+              </div>
+              <% end %>
+            <% end %>
+
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-heading">LA NOSTRA PENSIONE PER CAVALLI ANZIANI</h2>
+          <div class="row">
+            <div class="col-md-6 text-justify">
+              <p class="lead">I grandi spazi verdi nei 50 ettari dell’azienda e le cure e le attenzioni dello staff, dai groom ai responsabili di scuderia all’équipe veterinaria, saranno la tua sicurezza.</p>
+              <p class="lead">Ogni cavallo, dal puledro all’esemplare anziano, necessita un programma di lavoro, cure e un’alimentazione specifici per ogni esigenza. Vieni a visitare le nostre scuderie e i paddock, un responsabile sarà li per rispondere a qualunque domanda e a scegliere con te le modalità più adatte ad ospitare il tuo amico.</p>
+              <hr class="no-desktop">
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="<%= image_path('allevamento/pensione-cavalli.jpg') %>" style="border-radius:10px; width:70%">
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+
+    <!-- CALL-TO-ACTION -->
+    <section class="call-to-action">
+      <div class="container">
+        <div class="pull-left">
+          <h2 class="section-heading">PER MAGGIORI INFO:</h2>
+        </div>
+        <div class="pull-right">
+          <strong>
+            <i class="fa fa-phone"></i> &nbsp; +39 338 82 91 238 <br>
+            <i class="fa fa-envelope"></i> &nbsp; garganigiulia@gmail.com
+          </strong>
+        </div>
+      </div>
+    </section>
+    <!-- END CALL-TO-ACTION -->

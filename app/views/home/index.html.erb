@@ -1,3 +1,10 @@
+		<% if flash[:notice] %>
+			<div class="alert alert-success alert-dismissible" role="alert" style="margin:0">
+	  		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  		<%= flash[:notice].html_safe %>
+			</div>
+		<% end %>
+
 		<!-- HERO UNIT -->
 		<section class="hero-unit-slider">
 			<div id="carousel-hero" class="slick-carousel">
@@ -50,8 +57,8 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="news-item news-featured">
-										<a href="/news/<%= @articles[0].id %>"><img src="<%= @articles[0].image %>" class="img-responsive" alt="News Thumbnail"></a>
-										<h3 class="news-title"><a href="/news/<%= @articles[0].id %>"><%= @articles[0].title %></a></h3>
+										<a href="/articles/<%= @articles[0].id %>"><img src="<%= @articles[0].image %>" class="img-responsive" alt="News Thumbnail"></a>
+										<h3 class="news-title"><a href="/articles/<%= @articles[0].id %>"><%= @articles[0].title %></a></h3>
 										<p><%= @articles[0].subtitle %></p>
 										<div class="news-meta">
 											<span class="news-datetime"><%= @articles[0].created_at.strftime("%d/%m/%Y") %></span>
@@ -63,9 +70,9 @@
 										<% @articles[1..2].each do |article| %>
 											<div class="col-md-12 col-sm-12">
 												<div class="news-item margin-bottom-30px clearfix">
-													<a href="/news/<%= article.id %>"><img src="<%= article.image %>" class="img-responsive pull-left" alt="News Thumbnail"></a>
+													<a href="/articles/<%= article.id %>"><img src="<%= article.image %>" class="img-responsive pull-left" alt="News Thumbnail"></a>
 													<div class="right">
-														<h3 class="news-title"><a href="/news/<%= article.id %>"><%= article.title %></a></h3>
+														<h3 class="news-title"><a href="/articles/<%= article.id %>"><%= article.title %></a></h3>
 														<p><%= article.subtitle %></p>
 													</div>
 												</div>
@@ -73,7 +80,7 @@
 										<% end %>
 										<div class="col-md-12 col-sm-12">
 											<div class="see-all-news">
-												<a href="/news">Leggi tutto <i class="fa fa-long-arrow-right"></i></a>
+												<a href="/articles">Leggi tutto <i class="fa fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
@@ -290,6 +297,7 @@
 									</div>
 								</div>
 								<input type="hidden" name="msg-submitted" id="msg-submitted" value="true">
+								<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 							</form>
 						</div>
 						<!-- END CONTACT FORM -->

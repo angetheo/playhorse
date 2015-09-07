@@ -1,5 +1,6 @@
 puts "Starting seeding..."
 
+puts "- Seeding Carousel"
 Carousel.destroy_all
 3.times do
   Carousel.create({
@@ -11,6 +12,7 @@ Carousel.destroy_all
     })
 end
 
+puts "- Seeding Article"
 Article.destroy_all
 10.times do
   Article.create({
@@ -22,6 +24,7 @@ Article.destroy_all
   })
 end
 
+puts "- Seeding Faq"
 Faq.destroy_all
 10.times do
   Faq.create({
@@ -32,6 +35,7 @@ Faq.destroy_all
   })
 end
 
+puts "- Seeding Service"
 Service.destroy_all
 6.times do
 	Service.create({
@@ -41,6 +45,7 @@ Service.destroy_all
 	})
 end
 
+puts "- Seeding Event"
 Event.destroy_all
 10.times do
   Event.create({
@@ -53,6 +58,7 @@ Event.destroy_all
   })
 end
 
+puts "- Seeding Horse"
 Horse.destroy_all
 10.times do
   Horse.create({
@@ -69,6 +75,7 @@ Horse.destroy_all
   })
 end
 
+puts "- Seeding Product"
 Product.destroy_all
 10.times do
   Product.create({
@@ -80,6 +87,7 @@ Product.destroy_all
   })
 end
 
+puts "- Seeding Staff"
 Staff.destroy_all
 orders = (1..10).to_a.shuffle
 10.times do
@@ -95,5 +103,21 @@ orders = (1..10).to_a.shuffle
     linkedin: ['linkedin.com/doge',''].sample
   })
 end
+
+puts "- Seeding Mare"
+Mare.destroy_all
+10.times do
+  Mare.create({
+    name: Faker::Commerce.product_name,
+    description: Faker::Company.bs,
+    image: 'http://lorempixel.com/200/200'
+  })
+end
+
+puts "- Seeding Communication"
+Communication.create({ 
+  content: "La tua comunicazione qui.",
+  comm_type: "eventi" 
+})
 
 puts "Seeding completed."

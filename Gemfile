@@ -41,6 +41,12 @@ gem 'dotenv-rails'
 gem "font-awesome-rails"
 gem 'aws-sdk', '~>2'
 
+# Pony mailer
+gem 'pony'
+
+# JQuery UI
+gem 'jquery-ui-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

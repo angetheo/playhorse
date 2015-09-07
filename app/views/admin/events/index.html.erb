@@ -64,6 +64,23 @@
           </tbody>
         </table>
 
+        <hr>
+        <h4><i class="fa fa-bullhorn"></i> Comunicazioni <small>> Gestione delle comunicazioni relative agli eventi</small></h4>
+        <hr>
+
+        <!-- COMMUNICATIONS -->
+        <div class="row">
+          <div class="col-md-6">
+            <form method="post" id="communication-form">
+              <textarea class="form-control" rows=5 name="edit_communication"><%= @communication.content %></textarea>
+              <input type="hidden" name="t" value="eventi">
+              <br>
+              <button type="submit" class="btn btn-primary">Salva</button>
+              <span class="edit-success"><i class="fa fa-check"></i> Salvato!</span>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- END PAGE CONTENT -->
@@ -79,8 +96,11 @@
             <div class="modal-body">
               <form action="/events" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="event_date">Data</label>
-                  <input type="text" class="form-control" id="event_date" name="event_date" placeholder="YYYY-MM-DD" required>
+                  <label for="event_date">Data (YYYY-MM-DD)</label>
+                  <div class="input-group">
+                    <span class="input-group-addon btn"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="datepicker" id="event_date" name="event_date" required>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="event_name">Categoria (nome evento)</label>
@@ -125,7 +145,10 @@
             <form method="post">
               <div class="form-group">
                 <label for="edit_event_date">Data (YYYY-MM-DD)</label>
-                <input type="text" class="form-control" id="edit_event_date" name="edit_event_date" placeholder="YYYY-MM-DD" required>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <input type="text" class="datepicker" id="edit_event_date" name="edit_event_date" required>
+                </div>
               </div>
               <div class="form-group">
                 <label for="edit_event_name">Categoria (Nome)</label>

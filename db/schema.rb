@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831145626) do
+ActiveRecord::Schema.define(version: 20150907153952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20150831145626) do
     t.string   "subtitle"
     t.string   "button"
     t.string   "button_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "communications", force: :cascade do |t|
+    t.text     "content"
+    t.string   "comm_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,6 +79,14 @@ ActiveRecord::Schema.define(version: 20150831145626) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "mares", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "product_type"
     t.string   "category"
@@ -100,6 +115,12 @@ ActiveRecord::Schema.define(version: 20150831145626) do
     t.string   "mail"
     t.string   "phone"
     t.string   "linkedin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

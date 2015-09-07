@@ -3728,9 +3728,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .hero-unit-animated {
   padding: 100px 0;
   color: #fff;
-  background-image: url('../img/hero-unit-bg.png?1420789489');
+  background-image: url(allevamento/allevamento.jpeg);
+  background-size:cover;
   background-repeat: no-repeat;
-  background-position: center -75px;
+  /*background-position: center -75px;*/
 }
 .hero-unit-animated .hero-heading {
   font-family: "Roboto Condensed", sans-serif;
@@ -3768,7 +3769,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .hero-left {
-  max-width: 50%;
+  max-width: 80%;
 }
 
 /* carousel */

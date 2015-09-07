@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'products' => 'products#index'
     get 'staff' => 'staff#index'
     get 'tools' => 'tools#index'
+    get 'mares' => 'mares#index'
   end
 
   #############
@@ -44,12 +45,22 @@ Rails.application.routes.draw do
   post 'products/search' => 'products#search'
   # STAFF
   resources :staff
+  # CONTACT
+  post 'contact' => 'application#contact'
+  # MARES
+  resources :mares
+  # SUBSCRIBERS
+  resources :subscribers, only: [:create, :destroy]
+  # COMMUNICATIONS
+  put 'communications' => 'communications#edit'
 
   ##############
   # NAVIGATION #
   ##############
 
   root 'home#index'
+
+  get 'agriturismo' => 'farmhouse#index'
 
 
 end

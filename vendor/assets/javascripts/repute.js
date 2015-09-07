@@ -238,24 +238,6 @@ ready = function() {
 		$('#product-key').mask('a*-999-a999');
 	}
 
-	
-	/*--------------------------------/
-	/* DATE PICKER
-	/*-------------------------------*/
-
-	if($('#date-picker-demo').length > 0) {
-		var dtp = $('#datepicker').datepicker()
-			.on('changeDate', function(e) { dtp.datepicker('hide'); });
-
-		$('#daterangepicker').daterangepicker({
-			timePicker: true,
-			timePickerIncrement: 10,
-			format: 'MM/DD/YYYY h:mm A',
-			applyClass: "btn-primary"
-		});
-	}
-
-
 	/*--------------------------------/
 	/* TEXTAREA WITH COUNTER
 	/*-------------------------------*/

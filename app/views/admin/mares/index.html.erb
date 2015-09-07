@@ -1,0 +1,125 @@
+    <!-- BREADCRUMBS -->
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title pull-left">ALLEVAMENTO</h1>
+        <ol class="breadcrumb">
+          <li>
+            Gestione delle informazioni sulle fattrici
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- END BREADCRUMBS -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <div class="container wow fadeInUp">
+
+        <hr>
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#new_mare_modal"><i class="fa fa-plus"></i> &nbsp; AGGIUNGI FATTRICE</button>
+        <h4><i class="fa fa-paw"></i> Allevamento <small>> Gestione fattrici</small></h4>
+        <hr>
+
+        <table class="table table-hover table-responsive">
+          <col width="5%">
+          <col width="25%">
+          <col width="40%">
+          <col width="15%">
+          <col width="15%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Descrizione</th>
+              <th>Immagine</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @mares.each do |mare| %>
+            <tr>
+              <td><%= mare.id %></td>
+              <td><%= mare.name %></td>
+              <td><%= mare.description.size > 50 ? mare.description[0..50]+"..." : mare.description %></td>
+              <td><%= mare.image.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
+              <td>
+                <a class="btn btn-success btn-xs" style="width:25px" href="/mares"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-warning btn-xs edit_mare" style="width:25px" href="/mares/<%= mare.id %>"><i class="fa fa-edit"></i></a>
+                <form action="/mares/<%= mare.id %>" method="post" style="display:inline" onsubmit="return confirm('Vuoi davvero cancellare la fattrice selezionato?');">
+                  <button class="btn btn-danger btn-xs" style="width:25px" type="submit", name="_method" value="delete"><i class="fa fa-trash"></i></button>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                </form>
+              </td>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- NEW MARE MODAL -->
+    <div class="modal fade" id="new_mare_modal" tabindex="-1" role="dialog" aria-labelledby="new_mare_modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="new_mare_title"><i class="fa fa-edit"></i> Inserisci una nuova fattrice</h4>
+          </div>
+          <div class="modal-body">
+            <form action="/mares" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="mare_name">Nome</label>
+                <input type="text" class="form-control" id="mare_name" name="mare_name" placeholder="Nome ..." required>
+              </div>
+              <div class="form-group">
+                <label for="mare_description">Descrizione</label>
+                <textarea class="form-control" id="mare_description" name="mare_description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="mare_image">Immagine (200x200)</label>
+                <input type="file" id="mare_image" name="mare_image" value="">
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+              <button type="submit" class="btn btn-primary">Pubblica</button>
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END NEW HORSE MODAL -->
+
+    <!-- EDIT HORSE MODAL -->
+    <div class="modal fade" id="edit_mare_modal" tabindex="-1" role="dialog" aria-labelledby="edit_mare_modal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="edit_mare_title"><i class="fa fa-edit"></i> Modifica le informazioni della fattrice</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="edit_mare_name">Nome</label>
+                <input type="text" class="form-control" id="edit_mare_name" name="edit_mare_name" placeholder="Nome ..." required>
+              </div>
+              <div class="form-group">
+                <label for="edit_mare_description">Descrizione</label>
+                <textarea class="form-control" id="edit_mare_description" name="edit_mare_description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="edit_mare_image">Immagine (200x200)</label>
+                <input type="file" id="edit_mare_image" name="edit_mare_image" value="">
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+              <button type="submit" class="btn btn-primary">Modifica</button>
+              <input type="hidden" name="_method" value="put">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL -->

@@ -5,7 +5,33 @@ var admin_events_ready;
 
 admin_events_ready = function() {
 
-	// ARTICLE MODAL AJAX
+	$('.datepicker').datepicker({
+		dateFormat: 'yy-mm-dd'
+	});
+
+	// COMMUNICATION AJAX
+	$('#communication-form').on('submit', function(e) {
+		e.preventDefault();
+
+		var formData = $(this).serialize();
+
+		$.ajax({
+			url: '/communications',
+			dataType: 'json',
+			data: formData,
+			type: 'put'
+		})
+			.done(function(serverData) {
+				console.log(serverData);
+				$('.edit-success').fadeIn();
+				setTimeout(function(){$('.edit-success').fadeOut()}, 3000);
+			})
+			.fail(function(a, b, c) {
+				console.log(a, b, c);
+			});
+	});
+
+	// EVENT MODAL AJAX
 	$('.edit_event').on('click', function(e) {
 		e.preventDefault();
 		var $eventId = $(this).attr('href').replace( /^\D+/g, '');

@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
       title: params[:article_title],
       subtitle: params[:article_subtitle],
       content: params[:article_content],
-      image: upload(params[:article_image].original_filename, params[:article_image].tempfile),
+      image: upload(params[:article_image].original_filename, params[:article_image].tempfile, 'playhorse-articles'),
       views: 0
     })
 
@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   	@article.title = params[:edit_article_title]
   	@article.subtitle = params[:edit_article_subtitle]
   	@article.content = params[:edit_article_content]
-  	@article.image = upload(params[:edit_article_image].original_filename, params[:edit_article_image].tempfile) unless params[:edit_article_image].nil?
+  	@article.image = upload(params[:edit_article_image].original_filename, params[:edit_article_image].tempfile, 'playhorse-articles') unless params[:edit_article_image].nil?
   	@article.save!
 	  redirect_to(:back)
   end
