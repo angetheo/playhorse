@@ -25,4 +25,8 @@ development:
   <<: *default
   database: "playhorsefarm_development"
 
+test:
+  <<: *default
+  database: "playhorsefarm_test"
+
 

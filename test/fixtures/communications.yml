@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  events: MyText
+  content: MyText
+  comm_type: eventi
 
 two:
-  events: MyText
+  content: MyText
+  comm_type: eventi

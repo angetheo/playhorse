@@ -52,14 +52,13 @@ Rails.application.routes.draw do
   # SUBSCRIBERS
   resources :subscribers, only: [:create, :destroy]
   # COMMUNICATIONS
-  put 'communications' => 'communications#edit'
+  put 'communications' => 'communications#update'
 
   ##############
   # NAVIGATION #
   ##############
 
   root 'home#index'
-
   get 'agriturismo' => 'farmhouse#index'
 
 
