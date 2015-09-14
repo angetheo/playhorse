@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  include AdminHelper
+  include Admin::AdminHelper
   
   def index
   end

@@ -1,6 +1,6 @@
 class CarouselController < ApplicationController
 
-  include AdminHelper
+  include Admin::AdminHelper
 
   def show
     @carousel = Carousel.find(params[:id])

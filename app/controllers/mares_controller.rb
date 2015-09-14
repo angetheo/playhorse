@@ -1,6 +1,6 @@
 class MaresController < ApplicationController
 
-	include AdminHelper
+	include Admin::AdminHelper
 
   def index
   	@mares = Mare.all.sort_by(&:created_at).reverse

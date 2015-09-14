@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-	include AdminHelper
+	include Admin::AdminHelper
 
   def index
   	@events = Event.all.sort_by(&:created_at).reverse

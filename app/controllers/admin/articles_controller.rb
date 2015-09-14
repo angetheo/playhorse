@@ -1,7 +1,6 @@
 class Admin::ArticlesController < ApplicationController
 
 	layout "admin_layout"
-	include AdminHelper
 
 	before_filter :authenticate
 	

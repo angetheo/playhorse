@@ -1,6 +1,6 @@
 class HorsesController < ApplicationController
 
-	include AdminHelper
+	include Admin::AdminHelper
 
   def index
   	@horses = Horse.all.sort_by(&:created_at).reverse

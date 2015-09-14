@@ -1,7 +1,6 @@
 class Admin::ProductsController < ApplicationController
 
 	layout "admin_layout"
-	include AdminHelper
 	
 	before_filter :authenticate
 	

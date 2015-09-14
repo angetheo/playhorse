@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  include AdminHelper
+  include Admin::AdminHelper
 
   def index
   	@all_articles = Article.all

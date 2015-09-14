@@ -1,6 +1,6 @@
 class StaffController < ApplicationController
 
-	include AdminHelper
+	include Admin::AdminHelper
 
   def index
   	@staff = Staff.all

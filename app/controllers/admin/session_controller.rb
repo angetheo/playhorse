@@ -1,7 +1,6 @@
 class Admin::SessionController < ApplicationController
 
 	layout "admin_layout"
-	include AdminHelper
 
   # SESSION ACTIONS #
 
