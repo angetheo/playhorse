@@ -12,7 +12,7 @@ class ServiceController < ApplicationController
 
   	@service.title = params[:edit_service_title]
   	@service.description = params[:edit_service_description]
-  	@service.save
+  	@service.save!
 
   	respond_to do |format|
   		format.json { render json: @service }

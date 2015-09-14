@@ -16,8 +16,9 @@ class HorsesController < ApplicationController
 
   def create
     picture = params[:horse_picture].nil? ? "" : upload(params[:horse_picture].original_filename, params[:horse_picture].tempfile)
+    video = params[:horse_video].nil? ? "" : "https://www.youtube.com/embed/#{youtube_id(params[:horse_video])}"
 
-    Horse.create({
+    @horse = Horse.create({
       name: params[:horse_name],
       father: params[:horse_father],
       mother: params[:horse_mother],
@@ -26,7 +27,7 @@ class HorsesController < ApplicationController
       category: params[:horse_category],
       description: params[:horse_description],
       cv_url: params[:horse_cv_url],
-      video: "https://www.youtube.com/embed/#{youtube_id(params[:horse_video])}",
+      video: video,
       picture: picture
     })
 
@@ -44,11 +45,11 @@ class HorsesController < ApplicationController
   	@horse.category = params[:edit_horse_category]
   	@horse.description = params[:edit_horse_description]
   	@horse.cv_url = params[:edit_horse_cv_url]
-  	@horse.video = "https://www.youtube.com/embed/#{youtube_id(params[:edit_horse_video])}"
+  	@horse.video = "https://www.youtube.com/embed/#{youtube_id(params[:edit_horse_video])}" unless params[:edit_horse_video].nil?
   	@horse.picture = upload(params[:edit_horse_picture].original_filename, params[:edit_horse_picture].tempfile) unless params[:edit_horse_picture].nil?
 
   	@horse.save!
-	redirect_to(:back)
+	  redirect_to(:back)
   end
 
   def destroy

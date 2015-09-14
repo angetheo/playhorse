@@ -19,7 +19,7 @@ class StaffController < ApplicationController
   def create
     picture = params[:staff_picture].nil? ? "/assets/staff/profile-placeholder.png" : upload(params[:staff_picture].original_filename, params[:staff_picture].tempfile, 'playhorse-staff')
 
-    Staff.create({
+    @staff = Staff.create({
       name: params[:staff_name],
       division: params[:staff_division],
       role: params[:staff_role],

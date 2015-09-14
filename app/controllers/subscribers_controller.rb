@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
   def create
-  	Subscriber.create({
+  	@subscriber = Subscriber.create({
   		email: params[:subscriber_email]
   	})
 

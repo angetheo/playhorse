@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   def create
     picture = params[:product_picture].nil? ? "/assets/placeholders/placeholder.png" : upload(params[:product_picture].original_filename, params[:product_picture].tempfile, 'playhorse-products')
 
-    Product.create({
+    @product = Product.create({
       category: params[:product_category],
       product_type: params[:product_type],
       name: params[:product_name],

@@ -17,7 +17,7 @@ class MaresController < ApplicationController
   def create
     picture = params[:mare_image].nil? ? "" : upload(params[:mare_image].original_filename, params[:mare_image].tempfile, 'playhorse-mares')
 
-    Mare.create({
+    @mare = Mare.create({
       name: params[:mare_name],
       description: params[:mare_description],
       image: picture
