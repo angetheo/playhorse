@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     # ROOT
     root to: 'home#index'
     # SESSION
-    match 'login' => 'admin#login', via: [:get, :post]
-    get 'logout' => 'admin#logout'
+    match 'login' => 'session#login', via: [:get, :post]
+    get 'logout' => 'session#logout'
     # PAGES
     get 'articles' => 'articles#index'
     get 'events' => 'events#index'
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   # SUBSCRIBERS
   resources :subscribers, only: [:create, :destroy]
   # COMMUNICATIONS
-  put 'communications' => 'communications#update'
+  resources :communications, only: [:update]
 
   ##############
   # NAVIGATION #

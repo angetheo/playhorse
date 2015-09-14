@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
   def create
     article_image = params[:article_image].blank? ? "" : upload(params[:article_image].original_filename, params[:article_image].tempfile, 'playhorse-articles')
 
-    Article.create({
+    @article = Article.create({
       title: params[:article_title],
       subtitle: params[:article_subtitle],
       content: params[:article_content],

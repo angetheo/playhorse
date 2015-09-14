@@ -13,3 +13,10 @@ two:
   subtitle: MyString
   button: MyString
   button_url: MyString
+
+three:
+  image: MyString
+  title: MyString
+  subtitle: MyString
+  button: MyString
+  button_url: MyString

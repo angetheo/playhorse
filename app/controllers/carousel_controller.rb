@@ -18,7 +18,7 @@ class CarouselController < ApplicationController
 	  @carousel.button = params[:edit_carousel_button]
 	  @carousel.button_url = params[:edit_carousel_button_url]
 	  @carousel.image = upload(params[:edit_carousel_image].original_filename, params[:edit_carousel_image].tempfile) unless params[:edit_carousel_image].nil?
-	  @carousel.save!
+    @carousel.save!
 	  redirect_to(:back)
   end
 end

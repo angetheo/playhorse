@@ -1,9 +1,5 @@
 module AdminHelper
 
-	def administrator?
-		!!session[:user]
-	end
-
 	def upload(filename, tempfile, bucket='playhorse')
     s3 = Aws::S3::Client.new(region: 'eu-central-1')
 

@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def authenticate
+    if !session[:user]
+      redirect_to :admin_login, alert: 'Errore: effettua il login prima di visitare la pagina.'
+    end
+  end
+
   def twitter_login
   	Twitter::REST::Client.new do |config|
   		config.consumer_key = ENV['TWITTER_CONSUMER_KEY']

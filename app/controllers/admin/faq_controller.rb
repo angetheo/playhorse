@@ -3,6 +3,8 @@ class Admin::FaqController < ApplicationController
 	layout "admin_layout"
 	include AdminHelper
 
+  before_filter :authenticate
+
   def index
   	@faqs = Faq.all
   	@categorized_faqs = Array.new

@@ -3,13 +3,11 @@ class Admin::HomeController < ApplicationController
 	layout "admin_layout"
 	include AdminHelper
 
+  before_filter :authenticate
+
   def index
-    if !administrator?
-      redirect_to :admin_login
-    else
-      @carousels = Carousel.all.sort_by(&:id)
-      @services = Service.all.sort_by(&:id)
-    end
+    @carousels = Carousel.all.sort_by(&:id)
+    @services = Service.all.sort_by(&:id)
   end
 
 end

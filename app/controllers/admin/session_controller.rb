@@ -1,4 +1,4 @@
-class Admin::AdminController < ApplicationController
+class Admin::SessionController < ApplicationController
 
 	layout "admin_layout"
 	include AdminHelper

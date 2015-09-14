@@ -14,7 +14,7 @@ class FaqController < ApplicationController
   end
 
   def create
-  	Faq.create({
+  	@faq = Faq.create({
   		category: params[:faq_category],
   		question: params[:faq_question],
   		answer: params[:faq_answer],

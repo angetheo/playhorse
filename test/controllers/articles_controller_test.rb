@@ -34,18 +34,20 @@ class ArticlesControllerTest < ActionController::TestCase
   # CREATE
   test 'should create a new article' do
   	@request.env['HTTP_REFERER'] = '/admin/articles'
+
   	assert_difference('Article.count') do
-    	post :create, params: { article: { title: 'Some title', subtitle: 'subtitle', content: 'content', image: '', views: 0} }
+    	post :create, article_title: 'Some title'
   	end
+    assert_equal 'Some title', assigns(:article).title
   	assert_response :redirect
   end
 
   # UPDATE
   test 'should update a single article' do
-  	put :update, id: @article.id, params: { article: { title: 'different title' } }
+  	put :update, id: @article.id, edit_article_title: 'New title'
 
-  	assert_response :redirect
-  	assert_equal @article.title, Article.first.title
+  	assert_equal 'New title', assigns(:article).title
+    assert_response :redirect
   end
 
   # DESTROY

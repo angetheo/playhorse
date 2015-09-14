@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     announcement = params[:file_announcement].nil? ? "" : upload(params[:file_announcement].original_filename, params[:file_announcement].tempfile)
     result = params[:file_result].nil? ? "" : upload(params[:file_result].original_filename, params[:file_result].tempfile)
 
-    Event.create({
+    @event = Event.create({
       date: params[:event_date],
       name: params[:event_name],
       program: program,
