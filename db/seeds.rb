@@ -49,7 +49,8 @@ puts "- Seeding Event"
 Event.destroy_all
 10.times do
   Event.create({
-    date: rand(2014..2015).to_s+"/"+rand(1..12).to_s+"/"+rand(1..31).to_s,
+    date_from: rand(2014..2015).to_s+"/"+rand(1..12).to_s+"/"+rand(1..28).to_s,
+    date_to: rand(2014..2015).to_s+"/"+rand(1..12).to_s+"/"+rand(1..28).to_s,
     name: "Concorso n. "+rand(100..400).to_s,
     program: ["www.something.com", ""].sample,
     hours: ["www.something.com", ""].sample,

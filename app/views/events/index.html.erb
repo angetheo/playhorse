@@ -201,7 +201,7 @@
     </section>
     <!-- END CALL-TO-ACTION -->
 
-        <!-- EVENTS MODAL -->
+    <!-- EVENTS MODAL -->
     <div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="events_modal" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -212,15 +212,17 @@
           <div class="modal-body">
             <!-- Table -->
             <table class="table">
-              <col width="20%">
-              <col width="52%">
-              <col width="7%">
-              <col width="7%">
-              <col width="7%">
-              <col width="7%">
+              <col width="15%">
+              <col width="15%">
+              <col width="50%">
+              <col width="5%">
+              <col width="5%">
+              <col width="5%">
+              <col width="5%">
               <thead>
                 <tr>
-                  <th>Data</th>
+                  <th>Da</th>
+                  <th>A</th>
                   <th>Categoria</th>
                   <th> </th>
                   <th> </th>
@@ -231,7 +233,8 @@
               <tbody>
                 <% @events.each do |event| %>
                 <tr>
-                  <td><%= event.date %></td>
+                  <td><%= event.date_from.strftime("%d/%m/%Y") %></td>
+                  <td><%= event.date_to.strftime("%d/%m/%Y") %></td>
                   <td><b><%= event.name.upcase %></b></td>
                   <td><%= event.program.empty? ? "" : ("<a href='"+event.program+"' target='_blank'><i class='fa fa-file-pdf-o fa-lg'></i></a>").html_safe %></td>
                   <td><%= event.hours.empty? ? "" : ("<a href='"+event.hours+"' target='_blank'><i class='fa fa-clock-o fa-lg'></i></a>").html_safe %></td>

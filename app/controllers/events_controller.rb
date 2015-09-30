@@ -22,7 +22,8 @@ class EventsController < ApplicationController
     result = params[:file_result].nil? ? "" : upload(params[:file_result].original_filename, params[:file_result].tempfile)
 
     @event = Event.create({
-      date: params[:event_date],
+      date_from: params[:event_date_from],
+      date_to: params[:event_date_to],
       name: params[:event_name],
       program: program,
       hours: hours,
@@ -36,7 +37,8 @@ class EventsController < ApplicationController
   def update
   	@event = Event.find(params[:id])
 
-  	@event.date = params[:edit_event_date]
+  	@event.date_from = params[:edit_event_date_from]
+    @event.date_to = params[:edit_event_date_to]
   	@event.name = params[:edit_event_name]
 
   	@event.program = upload(params[:edit_file_program].original_filename, params[:edit_file_program].tempfile) unless params[:edit_file_program].nil?

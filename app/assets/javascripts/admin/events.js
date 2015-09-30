@@ -45,8 +45,9 @@ admin_events_ready = function() {
 			.done(function(serverData) {
 				var $form = $('#edit_event_modal').find('form');
 				$form.attr('action','/events/'+$eventId);
-				$('#edit_event_date').attr('value',serverData.date);
-        		$('#edit_event_name').attr('value',serverData.name);
+				$('#edit_event_date_from').attr('value',serverData.date_from);
+				$('#edit_event_date_to').attr('value',serverData.date_to);
+        $('#edit_event_name').attr('value',serverData.name);
 
 				$('#edit_event_modal').modal();
 				$editIcon.html('<i class="fa fa-edit"></i>');

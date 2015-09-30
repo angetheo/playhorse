@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 20150907153952) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.date     "date"
+    t.date     "date_from"
+    t.date     "date_to"
     t.string   "name"
     t.string   "program"
     t.string   "hours"

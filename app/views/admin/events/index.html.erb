@@ -23,16 +23,18 @@
         <table class="table table-hover table-responsive">
           <col width="5%">
           <col width="15%">
-          <col width="40%">
-          <col width="6%">
-          <col width="6%">
-          <col width="6%">
-          <col width="6%">
-          <col width="16%">
+          <col width="15%">
+          <col width="30%">
+          <col width="5%">
+          <col width="5%">
+          <col width="5%">
+          <col width="5%">
+          <col width="15%">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Data</th>
+              <th>Da</th>
+              <th>A</th>
               <th>Categoria</th>
               <th>P</th>
               <th>O</th>
@@ -45,7 +47,8 @@
             <% @events.each do |event| %>
             <tr>
               <td><%= event.id %></td>
-              <td><%= event.date %></td>
+              <td><%= event.date_from %></td>
+              <td><%= event.date_to %></td>
               <td><%= event.name %></td>
               <td><%= event.program.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
               <td><%= event.hours.empty? ? "<i class='fa fa-times'></i>".html_safe : "<i class='fa fa-check'></i>".html_safe %></td>
@@ -96,10 +99,17 @@
             <div class="modal-body">
               <form action="/events" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="event_date">Data (YYYY-MM-DD)</label>
+                  <label for="event_date_from">Da: </label>
                   <div class="input-group">
                     <span class="input-group-addon btn"><i class="fa fa-calendar"></i></span>
-                    <input type="text" class="datepicker" id="event_date" name="event_date" required>
+                    <input type="text" class="datepicker" id="event_date_from" name="event_date_from" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="event_date_to">A: </label>
+                  <div class="input-group">
+                    <span class="input-group-addon btn"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="datepicker" id="event_date_to" name="event_date_to" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -144,10 +154,17 @@
           <div class="modal-body">
             <form method="post">
               <div class="form-group">
-                <label for="edit_event_date">Data (YYYY-MM-DD)</label>
+                <label for="edit_event_date_from">Da:</label>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                  <input type="text" class="datepicker" id="edit_event_date" name="edit_event_date" required>
+                  <input type="text" class="datepicker" id="edit_event_date_from" name="edit_event_date_from" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="edit_event_date_to">A:</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <input type="text" class="datepicker" id="edit_event_date_to" name="edit_event_date_to" required>
                 </div>
               </div>
               <div class="form-group">
