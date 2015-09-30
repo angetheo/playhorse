@@ -37,7 +37,7 @@
           </div>
           <div class="col-md-6">
             <hr class="no-desktop">
-            <img src="/assets/various/dettaglio_cavallo.jpg" style="border-radius:10px; max-width:100%">
+            <%= image_tag 'various/dettaglio_cavallo.jpg', style: 'border-radius:10px; max-width:100%' %>
           </div>
         </div>
         <hr>
@@ -92,7 +92,7 @@
     <!-- END PAGE CONTENT -->
 
     <!-- TESTIMONIAL -->
-    <section class="testimonial-with-horse parallax">
+    <section class="testimonial-with-horse parallax" style="background-image: url(<%= image_url 'parallax/horse-racing.jpg' %>">
       <div class="container">
         <div class="row">
           <div class="col-sm-4 text-center">

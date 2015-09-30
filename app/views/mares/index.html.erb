@@ -14,7 +14,7 @@
     </div>
     <!-- END BREADCRUMBS -->
 
-    <section class="hero-unit-animated">
+    <section class="hero-unit-animated" style="background-image: url(<%= image_url 'allevamento/allevamento.jpeg' %>">
       <div id="carousel-hero-animated" class="carousel">
         <!-- Slide Wrapper -->
         <div class="carousel-inner" role="listbox">
@@ -79,7 +79,7 @@
               <hr class="no-desktop">
             </div>
             <div class="col-md-6 text-center">
-              <img src="<%= image_path('allevamento/pensione-cavalli.jpg') %>" style="border-radius:10px; width:70%">
+              <%= image_tag 'allevamento/pensione-cavalli.jpg', style: 'border-radius:10px; max-width:70%' %>
             </div>
           </div>
         </section>
