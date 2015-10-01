@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # MOVE TO MAILER
   def contact
     options = {
       :to => 'supporto@playhorsefarm.com',

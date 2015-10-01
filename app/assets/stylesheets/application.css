@@ -15,6 +15,7 @@
  *= require responsive-calendar
  *= require jquery-ui/datepicker
  *= require repute
+ *= require lightgreen
  *= require layout
  *= require_tree .
  *= require_self
