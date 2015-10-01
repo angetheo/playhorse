@@ -5,6 +5,7 @@ var admin_article_ready;
 
 admin_article_ready = function() {
 	tinymce.remove();
+	console.log('initializing tinymce')
 	tinymce.init({
         selector: ".tinymce"
     });
