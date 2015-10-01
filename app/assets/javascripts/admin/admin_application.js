@@ -17,8 +17,6 @@
 //= require wow
 //= require parsley
 //= require easypiechart
-//= require tinymce/tinymce.min
-//= require tinymce/themes/modern/theme.min
 //= require repute
 //= require turbolinks
 //= require_tree .

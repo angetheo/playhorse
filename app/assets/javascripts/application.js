@@ -21,7 +21,6 @@
 //= require isotope.pkgd.min
 //= require parsley
 //= require responsive-calendar.min
-//= require tinymce/tinymce.min
 //= require google-map
 //= require repute
 //= require turbolinks

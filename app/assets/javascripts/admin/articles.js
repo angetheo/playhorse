@@ -4,11 +4,6 @@
 var admin_article_ready;
 
 admin_article_ready = function() {
-	tinymce.remove();
-	console.log('initializing tinymce')
-	tinymce.init({
-        selector: ".tinymce"
-    });
 
 	// ARTICLE MODAL AJAX
 	$('.edit_article').on('click', function(e) {
@@ -25,8 +20,8 @@ admin_article_ready = function() {
 				var $form = $('#edit_article_modal').find('form');
 				$form.attr('action','/articles/'+$articleId);
 				$('#edit_article_title').attr('value',serverData.title);
-        		$('#edit_article_subtitle').attr('value',serverData.subtitle);
-        		tinyMCE.activeEditor.setContent(serverData.content);
+        $('#edit_article_subtitle').attr('value',serverData.subtitle);
+        $('#edit_article_content').val(serverData.content);
 
 				$('#edit_article_modal').modal();
 				$editIcon.html('<i class="fa fa-edit"></i>');
