@@ -2,11 +2,11 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? content_for(:title) + " | Play Horse Farm" : "Admin | Play Horse Farm" %></title>
-  <%= stylesheet_link_tag 'admin/admin_application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' %>
   <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300" %>
 
-  <%= javascript_include_tag 'admin/admin_application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <meta charset="utf-8">

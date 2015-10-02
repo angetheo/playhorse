@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/datepicker
 //= require bootstrap
 //= require wow
 //= require slick
@@ -20,6 +21,7 @@
 //= require imagesLoaded.pkgd.min
 //= require isotope.pkgd.min
 //= require parsley
+//= require easypiechart
 //= require responsive-calendar.min
 //= require google-map
 //= require repute

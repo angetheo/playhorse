@@ -42,10 +42,12 @@ gem 'aws-sdk', '~>2'
 
 # Pony mailer
 gem 'pony'
-
 # JQuery UI
 gem 'jquery-ui-rails'
+# Faker
 gem 'faker'
+# HTML editor
+gem 'bootstrap-wysihtml5-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
