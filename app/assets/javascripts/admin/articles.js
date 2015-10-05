@@ -5,6 +5,12 @@ var admin_article_ready;
 
 admin_article_ready = function() {
 
+	// HTML EDITOR
+	window['rangy'].initialized = false
+	$('.wysi').each(function(i, elem) {
+    $(elem).wysihtml5();
+  });
+
 	// ARTICLE MODAL AJAX
 	$('.edit_article').on('click', function(e) {
 		e.preventDefault();
@@ -21,7 +27,7 @@ admin_article_ready = function() {
 				$form.attr('action','/articles/'+$articleId);
 				$('#edit_article_title').attr('value',serverData.title);
         $('#edit_article_subtitle').attr('value',serverData.subtitle);
-        $('#edit_article_content').val(serverData.content);
+        $('#edit_article_content').data('wysihtml5').editor.setValue(serverData.content);
 
 				$('#edit_article_modal').modal();
 				$editIcon.html('<i class="fa fa-edit"></i>');

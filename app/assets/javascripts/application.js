@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require bootstrap
+//= require bootstrap-wysihtml5
 //= require wow
 //= require slick
 //= require stellar

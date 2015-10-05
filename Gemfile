@@ -39,6 +39,7 @@ gem 'httparty'
 gem 'dotenv-rails'
 gem "font-awesome-rails"
 gem 'aws-sdk', '~>2'
+gem 'bootstrap-wysihtml5-rails'
 
 # Pony mailer
 gem 'pony'
