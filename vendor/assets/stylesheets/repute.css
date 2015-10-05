@@ -5138,9 +5138,6 @@ ul.sidebar-nav ul.submenu li:first-child a {
 }
 
 /* latest news */
-.news-item {
-  height:73px;
-}
 
 .news-item img {
   width: 140px;
