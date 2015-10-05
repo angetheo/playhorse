@@ -59,5 +59,7 @@ group :development, :test do
   gem 'spring'
   # SimpleCov provides you with test coverage
   gem 'simplecov', :require => false
+  # RSpec
+  gem 'rspec-rails'
 end
 
