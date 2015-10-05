@@ -4,11 +4,11 @@ puts "- Seeding Carousel"
 Carousel.destroy_all
 3.times do
   Carousel.create({
-      image: 'http://lorempixel.com/1920/500',
+      image: 'http://lorempixel.com/1920/700',
       title: Faker::Commerce.product_name,
       subtitle: Faker::Company.bs,
       button: ['SCOPRI', 'ESPLORA', 'VEDI', 'PARTECIPA', 'LEGGI TUTTO', 'ALTRO', 'WOW'].sample,
-      button_url: ['http://127.0.0.1:9393/news','http://127.0.0.1:9393/faq','http://127.0.0.1:9393/about','http://127.0.0.1:9393/asd'].sample
+      button_url: '#'
     })
 end
 

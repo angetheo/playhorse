@@ -3809,12 +3809,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 /* hero unit slider */
-.hero-unit-slider > * {
+.hero-unit-slider {
   /* hero unit with slick carousel */
   max-height:500px;
 }
 .hero-unit-slider .carousel-inner > .item {
   overflow: hidden;
+  height:500px;
 }
 .hero-unit-slider .carousel-caption {
   bottom: inherit;
@@ -3867,6 +3868,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 }
 .hero-unit-slider .slick-carousel .slick-slider {
+  height:500px;
   margin-bottom: 0;
 }
 .hero-unit-slider .slick-carousel .slick-prev, .hero-unit-slider .slick-carousel .slick-next {
