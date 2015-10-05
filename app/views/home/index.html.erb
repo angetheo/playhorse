@@ -28,7 +28,7 @@
 
 		<div class="clearfix margin-bottom-30px"></div>
 
-		<!-- BOXED CONTENT -->
+		<!-- SERVICES -->
 		<section>
 			<div class="container">
 				<% @services.each_slice(3) do |triplet| %>
@@ -37,7 +37,7 @@
 					<div class="col-md-4">
 						<div class="boxed-content left-aligned left-boxed-icon">
 							<i class="fa <%= service.icon %>"></i>
-							<h2 class="boxed-content-title"><a href="/asd/manifestazioni-equestri"><%= service.title.upcase %></a></h2>
+							<h2 class="boxed-content-title"><a href="<%= service.url %>"><%= service.title.upcase %></a></h2>
 							<p><%= service.description %></p>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 				<% end %>
 			</div>
 		</section>
-		<!-- END BOXED CONTENT -->
+		<!-- END SERVICES -->
 
 		<!-- LATEST NEWS AND EVENTS -->
 		<section>
