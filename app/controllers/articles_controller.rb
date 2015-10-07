@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  include Admin::AdminHelper
+  before_action :authenticate, except: [:index, :show]
 
   def index
   	@all_articles = Article.all
@@ -42,7 +42,11 @@ class ArticlesController < ApplicationController
       views: 0
     })
 
-    redirect_to(:back)
+    if @article.save
+      redirect_to :back
+    else
+      redirect_to :back, notice: 'Alcuni dati obbligatori sono mancanti. Si prega di riprovare.'
+    end
   end
 
   def update
@@ -52,8 +56,12 @@ class ArticlesController < ApplicationController
   	@article.subtitle = params[:edit_article_subtitle]
   	@article.content = params[:edit_article_content]
   	@article.image = upload(params[:edit_article_image].original_filename, params[:edit_article_image].tempfile, 'playhorse-articles') unless params[:edit_article_image].blank?
-  	@article.save!
-	  redirect_to(:back)
+  	
+    if @article.save
+      redirect_to :back
+    else
+      redirect_to :back, notice: 'Alcuni dati obbligatori sono mancanti. Si prega di riprovare.'
+    end
   end
 
   def destroy
