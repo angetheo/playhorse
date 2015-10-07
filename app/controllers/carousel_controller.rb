@@ -1,10 +1,9 @@
 class CarouselController < ApplicationController
 
-  include Admin::AdminHelper
+  before_action :authenticate
 
   def show
     @carousel = Carousel.find(params[:id])
-
   	respond_to do |format|
       format.json { render json: @carousel }
     end
@@ -18,7 +17,11 @@ class CarouselController < ApplicationController
 	  @carousel.button = params[:edit_carousel_button]
 	  @carousel.button_url = params[:edit_carousel_button_url]
 	  @carousel.image = upload(params[:edit_carousel_image].original_filename, params[:edit_carousel_image].tempfile) unless params[:edit_carousel_image].nil?
-    @carousel.save!
-	  redirect_to(:back)
+    
+    if @carousel.save
+	    redirect_to :back
+    else
+      redirect_to :back, notice: 'Alcuni dati obbligatori sono mancanti. Si prega di riprovare.'
+    end
   end
 end

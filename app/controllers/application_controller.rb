@@ -9,28 +9,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # MOVE TO MAILER
   def contact
-    options = {
-      :to => 'supporto@playhorsefarm.com',
-      :from => params[:contact_email],
-      :subject => params[:contact_subject],
-      :body => params[:contact_message],
-      :via => :smtp,
-      :via_options => {
-        :address => 'smtp.sendgrid.net',
-        :port => '587',
-        :domain => 'heroku.com',
-        :user_name => ENV['SENDGRID_USERNAME'],
-        :password => ENV['SENDGRID_PASSWORD'],
-        :authentication => :plain,
-        :enable_starttls_auto => true
-        }
-    }
+    ContactMailer.send_request(params)
+    redirect_to :root, notice: "<b>Messaggio Inviato!</b> Grazie per averci contattato! Ti risponderemo al più presto."
+  end
 
-    Pony.mail(options)
+  protected
 
-    flash[:notice] = "<b>Messaggio Inviato!</b> Grazie per averci contattato! Ti risponderemo al più presto."
-    redirect_to :root
+  def upload(filename, tempfile, bucket='playhorse')
+    s3 = Aws::S3::Client.new(region: 'eu-central-1')
+
+    key = File.basename(filename)
+    s3.put_object(
+      acl: 'public-read',
+      bucket: bucket,
+      key: key,
+      body: File.read(tempfile)
+    )
+
+    url = "https://#{bucket}.s3.eu-central-1.amazonaws.com/#{filename}"
+    return url
   end
 end
