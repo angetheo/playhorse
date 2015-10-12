@@ -15,10 +15,15 @@
     <div class="page-content">
       <div class="container wow fadeInUp">
 
-      	<hr>
-      	<h4><i class="fa fa-film"></i> Carousel <small>> Gestione degli elementi del carousel.</small></h4>
-  		<hr>
+      <!-- ERROR NOTICES -->
+      <% if flash[:notice] %>
+      <div class="alert alert-warning" role="alert"><%= flash[:notice] %></div>
+      <% end %>
+
   		<!-- CAROUSEL MANAGEMENT -->
+      <hr>
+      <h4><i class="fa fa-film"></i> Carousel <small>> Gestione degli elementi del carousel.</small></h4>
+  		<hr>
   		<div class="row no-margins">
   			<% @carousels.each do |carousel| %>
 	  		<div class="col-md-4 carousel-box">
@@ -27,14 +32,15 @@
 	  				<button class="btn btn-default btn-sm pull-right" id="carousel_modal_<%= carousel.id %>"><i class="fa fa-pencil"></i></button>
   					<h4><%= carousel.title.upcase %></h4>
   					<p><%= carousel.subtitle %></p>
-  					<%= ('<a href="'+carousel.button_url+'" class="btn btn-primary btn-sm">'+carousel.button+'</a>').html_safe if !!carousel.button %>
+  					<%= !carousel.button.blank? ? "<a href='#{carousel.button_url}' class='btn btn-primary btn-sm'>#{carousel.button}</a>".html_safe : '<button class="btn btn-primary btn-sm" disabled>NON ATTIVO</button>'.html_safe %>
 	  			</div>
 	  		</div>
 	  		<% end %>
   		</div>
   		<!-- END CAROUSEL MANAGEMENT -->
-  		<hr>
+
   		<!-- SERVICES MANAGEMENT -->
+  		<hr>
   		<h4><i class="fa fa-cubes"></i> Servizi <small> Gestione dei titoli e delle descrizioni dei servizi.</small></h4>
   		<hr>
   		<div class="row no-margins">
@@ -77,6 +83,7 @@
   		</div>
       </div>
     </div>
+    <!-- END SERVICES MANAGEMENT -->
 
     <!-- CAROUSEL MODAL -->
 		<div class="modal fade" id="edit_carousel_modal" tabindex="-1" role="dialog" aria-labelledby="edit_carousel_modal">

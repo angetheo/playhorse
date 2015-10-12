@@ -47,10 +47,12 @@ RSpec.describe CarouselController, :type => :controller do
     it "doesn't change the content if validations fail" do
       put :update,
         id: @carousel.id,
-        edit_carousel_title: 'validations suck'
+        edit_carousel_title: '',
+        edit_carousel_subtitle: 'empty title??'
 
       @carousel.reload
       expect(@carousel.title).to eq('title')
+      expect(@carousel.subtitle).to eq('subtitle')
     end
   end
 
