@@ -23,8 +23,8 @@
 //= require isotope.pkgd.min
 //= require parsley
 //= require easypiechart
-//= require responsive-calendar.min
 //= require google-map
+//= require responsive-calendar.min
 //= require repute
 //= require turbolinks
 //= require_tree .

@@ -1,16 +1,6 @@
-	// var loadScript;
-
-	// loadScript = function() {
-	// 	var script = document.createElement('script');
-	// 	script.type = 'text/javascript';
-	// 	script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ_PBnVagLZG7CMJTBfLlLPkLNnpturk0&sensor=true&' +
-	// 		'callback=initialize';
-	// 	document.body.appendChild(script);
-	// }
-
 	var geocoder, map;
 
-	function mapstart() {
+	function initialize() {
 		geocoder = new google.maps.Geocoder();
 
 		var styles = [
@@ -158,10 +148,6 @@
 		});
 	}
 
-	$(function() {
-			mapstart();
-	});
-
-	// $(document).ready(loadScript)
-	// $(document).on('page:load', loadScript);
+	$(document).ready(initialize);
+	$(document).on('page:load', initialize);
 
