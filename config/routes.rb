@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   # SUBSCRIBERS
   resources :subscribers, only: [:create, :destroy]
   # COMMUNICATIONS
-  resources :communications, only: [:update]
+  put 'communications' => 'communications#update'
 
   ##############
   # NAVIGATION #
