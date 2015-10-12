@@ -73,9 +73,9 @@
 
         <!-- COMMUNICATIONS -->
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
             <form method="post" id="communication-form">
-              <textarea class="form-control" rows=5 name="edit_communication"><%= @communication.content %></textarea>
+              <textarea class="form-control wysi" rows=5 name="edit_communication"><%= @communication.content %></textarea>
               <input type="hidden" name="t" value="eventi">
               <br>
               <button type="submit" class="btn btn-primary">Salva</button>
